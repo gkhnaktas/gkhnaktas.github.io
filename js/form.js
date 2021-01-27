@@ -47,14 +47,17 @@
 }).call(this);
 
 document.querySelector('button').addEventListener('click', function() {
-  const data = new URLSearchParams();
-  for (const pair of new FormData(document.querySelector('form'))) {
-      data.append(pair[0], pair[1]);
-  }
+  event.preventDefault();
+
+  let contact_form = document.getElementById('contact-form');
+  let formData = new FormData(contact_form);
+
+
+  console.log(formData);
 
   fetch('https://formspree.io/f/me@gaktas.com', {
       method: 'post',
-      body: data,
+      body: formData,
   })
   .then(function(response) {
     console.log(response);
