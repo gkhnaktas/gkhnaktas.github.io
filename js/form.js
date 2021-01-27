@@ -45,3 +45,21 @@
   window.floatingLabel = new floatingLabel(document.querySelector('.form'));
 
 }).call(this);
+
+document.querySelector('button').addEventListener('click', function() {
+  const data = new URLSearchParams();
+  for (const pair of new FormData(document.querySelector('form'))) {
+      data.append(pair[0], pair[1]);
+  }
+
+  fetch('https://formspree.io/f/me@gaktas.com', {
+      method: 'post',
+      body: data,
+  })
+  .then(function(response) {
+    console.log(response);
+  })
+  .catch(function(error) {
+    console.log(error);
+  })
+})
