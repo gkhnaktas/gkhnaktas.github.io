@@ -1,6 +1,7 @@
 body {
   min-height: calc(100vh - 40px);
   padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .container {
@@ -110,15 +111,19 @@ body {
   font: inherit;
   line-height: normal;
   cursor: pointer;
-  background-color: black;
-  color: white;
+  /* background-color: black;
+  color: white; */
   text-transform: uppercase;
   text-align: center;
-  letter-spacing: 0.14286em;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0.5em 1.5em;
+  /* letter-spacing: 0.14286em; */
 }
 .form .button:hover, .form .button:focus, .form .button:active {
-  color: white;
-  background: black;
+  /* color: white; */
+  background: #f1f1f1;
 }
 .form .button:active {
   position: relative;
@@ -126,17 +131,22 @@ body {
   left: 1px;
 }
 
+#form-status {
+  float: right;
+  padding-right: 2em;
+}
+
 .form {
   max-width: 50em;
   margin: 0 auto;
-  padding: 1em 2em;
+  padding: 0 2em;
   box-sizing: border-box;
   overflow: hidden;
 }
 .form .field {
   position: relative;
   width: 100%;
-  margin-bottom: 1.5em;
+  /* margin-bottom: 1.5em; */
   float: left;
 }
 @media screen and (max-width: 600px) {
