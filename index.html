@@ -1,12 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <title>Gökhan Aktaş</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="Gökhan Aktaş" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gaktas.com" />
+    <meta property="og:image" content="https://gaktas.com/image/cover.png" />
+    <meta property="og:description" content="A personal website for Gökhan Aktaş." />
+    <meta property="og:site_name" content="gaktas.com" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="shortcut icon" href="favicon.ico">
+    <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+    <script type="text/javascript" src="js/form.js"></script>
 </head>
 <body>
-    <h1>Hello, </h1>
-    <p>This is test</p>
+
+  <div class="container">
+
+    <h1 hidden>Personal webpage for Gökhan Aktaş</h1>
+
+
+    <div class="Aligner">
+      <div class="Aligner-item--top">
+
+        <img
+          src="/image/picasso.svg"
+          alt="picasso don quichot"
+          height="150"
+          width="150" />
+
+      </div>
+      <div class="Aligner-item--center">
+
+
+        <form action='https://formspree.io/f/gkhnaktas@gmail.com' method="POST" class='form'>
+          <p class='field required half'>
+            <label class='label required' for='name'>Name</label>
+            <input class='text-input' id='name' name='name' required type='text'>
+          </p>
+          <p class='field required half'>
+            <label class='label' for='email'>E-mail</label>
+            <input class='text-input' id='email' name='email' required type='email'>
+          </p>
+          <p class='field'>
+            <label class='label' for='message'>Message</label>
+            <textarea class='textarea' cols='50' id='message' name='message' required rows='4'></textarea>
+          </p>
+          <p class='field'>
+            <input class='button' type='submit' value='Send message'>
+          </p>
+        </form>
+
+      </div>
+      <div class="Aligner-item--bottom">
+
+        <div
+          class="LI-profile-badge"
+          data-version="v1"
+          data-size="medium"
+          data-locale="en_US"
+          data-type="horizontal"
+          data-theme="light"
+          data-vanity="gkhnaktas">
+          <a
+            class="LI-simple-link"
+            href='https://tr.linkedin.com/in/gkhnaktas?trk=profile-badge'>Gökhan Aktaş
+            </a>
+        </div>
+
+
+      </div>
+    </div>
+
+
+  </div>
+
 </body>
+
 </html>
