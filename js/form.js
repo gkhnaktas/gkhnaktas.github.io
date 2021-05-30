@@ -47,26 +47,21 @@
 }).call(this);
 
 
-
-const btn = document.getElementById('button');
-const form = document.getElementById("form");
-const status = document.getElementById("status");
-
-
 document.getElementById('form')
  .addEventListener('submit', function(event) {
    event.preventDefault();
 
-  var form = document.getElementById("contact-form");
-  var status = document.getElementById("form-status");
 
+  const btn = document.getElementById('button');
+  const form = document.getElementById("form");
+  const status = document.getElementById("status");
 
-   btn.value = 'Sending...';
+  btn.value = 'Sending...';
 
-   const serviceID = 'default_service';
-   const templateID = 'template_xi01arh';
+  const serviceID = 'default_service';
+  const templateID = 'template_xi01arh';
 
-   emailjs.sendForm(serviceID, templateID, this)
+  emailjs.sendForm(serviceID, templateID, this)
     .then(() => {
       form.reset();
       button.style = "display: none ";
