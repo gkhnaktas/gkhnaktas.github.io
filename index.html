@@ -33,12 +33,12 @@
 			margin-bottom: 2.5em;
 		}
 		input, textarea {
-		  width: 97.75%;
-		  line-height: 2em;
-		  font-size: 0.9rem;
-		  margin-bottom: 1.5em;
-		  padding-left: 5px;
-		  padding-right: 5px;
+			width: 97.75%;
+		 	line-height: 2em;
+		  	font-size: 0.9rem;
+			margin-bottom: 1.5em;
+		  	padding-left: 5px;
+		 	padding-right: 5px;
 		}
 		textarea {
 			line-height: 1.2em;
@@ -72,29 +72,28 @@
 	</script>
 	<script>
 		document.getElementById('form').addEventListener('submit', function(event) {
-		  event.preventDefault();
-		  const btn = document.getElementById('button');
-		  const form = document.getElementById("form");
-		  const status = document.getElementById("status");
-		  btn.value = 'Sending...';
-		  btn.disabled = true;
-		  const serviceID = 'default_service';
-		  const templateID = 'template_xi01arh';
-		  emailjs.sendForm(serviceID, templateID, this)
-		    .then(() => {
-		     	form.reset();
-		    	btn.style = "display: none ";
-		    	status.innerHTML = "Success, thanks for contacting me!";
-			    setTimeout(() => {
-			    	status.innerHTML = "";
-			    	btn.style = "display: inline";
-			      btn.value = 'Submit';
-			      btn.disabled = false;
-			    }, 5000);
-		    }, (err) => {
-		    	status.innerHTML = "Oops! There was a problem.";
-		    });
+			event.preventDefault();
+		  	const btn = document.getElementById('button');
+		  	const form = document.getElementById("form");
+		  	const status = document.getElementById("status");
+		  	btn.value = 'Sending...';
+		  	btn.disabled = true;
+		  	const serviceID = 'default_service';
+		  	const templateID = 'template_xi01arh';
+		  	emailjs.sendForm(serviceID, templateID, this).then(() => {
+		     		form.reset();
+		    		btn.style = "display: none ";
+		    		status.innerHTML = "Success, thanks for contacting me!";
+			    	setTimeout(() => {
+			    		status.innerHTML = "";
+			    		btn.style = "display: inline";
+			      		btn.value = 'Submit';
+			      		btn.disabled = false;
+			    	}, 5000);
+		    	}, (err) => {
+		    		status.innerHTML = "Oops! There was a problem.";
+		    	});
 		});
-</script>	
+</script>
 </body>
 </html>
