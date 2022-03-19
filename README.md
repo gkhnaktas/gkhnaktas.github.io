@@ -1,3 +1,3 @@
 # gkhnaktas.github.io
 
-# Personal website for gaktas.com
+### Personal website for gaktas.com
