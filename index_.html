@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Gökhan Aktaş</title>
+	<meta name="description" content="Hi, I'm Gökhan Aktaş. I'm a metallurgical engineer. I make things happen in steel industry.">
+	<meta name="author" content="SitePoint">
+	<meta property="og:title" content="Gökhan Aktaş">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://www.gaktas.com/">
+	<meta property="og:description" content="Hi, I'm Gökhan Aktaş. I'm a metallurgical engineer. I make things happen in steel industry.">
+	<meta property="og:image" content="https://www.gaktas.com/og.png">
+	<link rel="icon" href="./favicon.ico">
+	<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+	<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+	<style>
+	  	body {
+	  		font-family: "Papyrus";
+	  		max-width: 600px;
+	  		margin: auto;
+	  		padding-top: 2.5em;
+	  		padding-left: 1.5em;
+	  		padding-right: 1.5em;
+	  		background-color: #fdfdfd;
+	  	}
+	  	h1, h2 {
+	  		margin-bottom: 1,5em;
+		}
+		input, textarea {
+			width: 100%;
+		 	line-height: 2em;
+		  	font-size: 0.9rem;
+			margin-bottom: 1.5em;
+			text-indent: 5px;
+			padding: 0;
+		}
+		form {
+			margin-top: 3em;
+			padding-right: 4px;
+		}
+		textarea {
+			line-height: 1.3em;
+		}
+		input[type=submit] {
+			width: 90px;
+			font-size: 1rem;
+			padding: 7px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Hi,</h1>
+	<h1>I'm Gökhan Aktaş.</h1>
+	<h1>I'm a metallurgical engineer.</h1>
+	<h2>I make things happen in steel industry.</h2>
+	<h2>In case of necessity,</h2>
+	<h2>Contact me &darr;</h2>
+	<form id="form" autocomplete="off">
+		<input type="text" id="from_name" name="from_name" required placeholder="Your name">
+	  	<input type="email" id="reply_to" name="reply_to" required placeholder="Your email">
+	  	<textarea id="message" name="message" rows="3" cols="20" required placeholder="Your message"></textarea>
+	  	<input id="button" type="submit" value="Submit"></input>
+  	</form>
+  	<span id='status'></span>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<script>
+	emailjs.init('user_WdJ7cfsLvmGbAe4nVkXhv')
+</script>
+<script>
+	document.getElementById('form').addEventListener('submit', function(event) {
+		event.preventDefault();
+	  	const btn = document.getElementById('button');
+	  	const form = document.getElementById("form");
+	  	const status = document.getElementById("status");
+	  	btn.value = 'Sending...';
+	  	btn.disabled = true;
+	  	const serviceID = 'default_service';
+	  	const templateID = 'template_xi01arh';
+	  	emailjs.sendForm(serviceID, templateID, this).then(() => {
+	     		form.reset();
+	    		btn.style = "display: none ";
+	    		status.innerHTML = "Success, thanks for contacting me!";
+		    	setTimeout(() => {
+		    		status.innerHTML = "";
+		    		btn.style = "display: inline";
+		      		btn.value = 'Submit';
+		      		btn.disabled = false;
+		    	}, 5000);
+	    	}, (err) => {
+	    		status.innerHTML = "Oops! There was a problem.";
+	    	});
+	});
+</script>
+</html>
