@@ -866,7 +866,7 @@ $(".grid-item").click(function() {
     pic_urls[2] = pic_urls[0].replace("-1", "-3");
     const dimensions = $(this).data("area") + " m<sup>2</sup> (" + parseInt($(this).data("d1")) + " x " + parseInt($(this).data("d2")) + ") cm";
     const subHtml = `<div class="lightGallery-captions">
-                      <h3>` + $(this).data("district") + ($(this).data("model") ? `, ` + $(this).data("model") : '') + ' (~' + $(this).data("age") + `  years old.)</h3>
+                      <h3>` + $(this).data("district") + ($(this).data("model") ? `, ` + $(this).data("model") : '') + ' (~' + $(this).data("age") + `  years old)</h3>
                       <h4>` + dimensions + `</h4>
                       <small>pid: ` + $(this).data("id") + `</small>
                     </div>`;
