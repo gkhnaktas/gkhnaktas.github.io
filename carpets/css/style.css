@@ -1,0 +1,76 @@
+
+body {
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
+.content {
+    margin-top: 40px;
+}
+
+#masonry-grid {
+    margin: 0 auto;
+}
+
+.grid-item {
+    width: 289px;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: grey;
+    background-color: #e0e0e0;
+    cursor: pointer;
+}
+
+.grid-item img {
+    width: 100%;
+    max-width: 289px;
+}
+
+.info {
+    height: 40px;
+    background-color: #e0e0e0;;
+    padding-left: 5px;
+}
+
+
+.search
+{
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 90px;
+    border: 2px solid #9D5543;
+    overflow: auto;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.search input[type="text"]
+{
+    border: 0px;
+    width: 67%;
+    padding: 10px 10px;
+}
+
+.search input[type="text"]:focus
+{
+    outline: 0;
+}
+
+
+
+/* ===========================
+   ====== Medua Query for Search Box ====== 
+   =========================== */
+
+@media only screen and (min-width : 150px) and (max-width : 780px)
+{
+    {}
+    .search
+    {
+        width: 95%;
+        margin: 0 auto;
+        margin-top: 80px;
+    }
+
+}
