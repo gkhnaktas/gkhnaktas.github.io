@@ -68,9 +68,17 @@ body {
     {}
     .search
     {
-        width: 95%;
         margin: 0 auto;
         margin-top: 80px;
     }
 
+}
+
+.count {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.count_small {
+    padding-left: 10px;
 }

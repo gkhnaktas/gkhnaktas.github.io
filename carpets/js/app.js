@@ -802,6 +802,7 @@ function ms() {
         itemSelector: ".grid-item",
         isFitWidth: true
     });
+    $('#item_count').text($('.grid-item:visible').length);
 }
 
 $("#masonry-grid").imagesLoaded(function() {
@@ -838,6 +839,7 @@ $("#grid-filter li").click(function() {
         $(".grid-item").show();
         $("#masonry-grid").masonry("layout");
     }
+    $('#item_count').text($('.grid-item:visible').length);
 });
 
 
@@ -846,11 +848,13 @@ $('#searchbox').on('input',function(){
     var s = $(this).val();
     if (!s) {
         $(".grid-item").show();
+        $('#item_count').text($('.grid-item:visible').length);;
         return;
     }
     f = $('.grid-item').filter('[data-id^=' + $(this).val() + '], [data-district^=' + $(this).val() + '], [data-model^=' + $(this).val() + ']');
     $(".grid-item").hide();
     $(f).show()
+    $('#item_count').text($('.grid-item:visible').length);;
     $("#masonry-grid").masonry("layout");
 });
 
