@@ -884,9 +884,8 @@ $(".grid-item").click(function () {
                       <h4>` + dimensions + `</h4>
                       <small>pid: ` + $(this).data("id") + `</small>
                     </div>`;
-  const dynamicGallery = lightGallery($(this), {
+  const dynamicGallery = window.lightGallery($(this), {
     dynamic: true,
-    speed: 500,
     dynamicEl: [{
       src: pic_urls[0],
       thumb: pic_urls[0].replace("/1920", "/thumb"),
@@ -901,7 +900,8 @@ $(".grid-item").click(function () {
       subHtml: subHtml
     }]
   });
-  dynamicGallery.openGallery();
+
+  dynamicGallery.openGallery(0);
 });
 
 var getUrlParameter = function getUrlParameter(sParam) {
@@ -932,3 +932,4 @@ $(document).ready(function () {
     }
   }
 });
+
