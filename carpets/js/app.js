@@ -521,8 +521,8 @@ const carpets = [
     "d2": 138,
     "d3": 69,
     "area": 0.95,
-    "type": "Kilim",
-    "type2": "kilim",
+    "type": "Other",
+    "type2": "other",
     "district": "Konya",
     "model": "",
     "age": 70
@@ -855,16 +855,14 @@ $("#grid-filter li").click(function() {
     count_grid();
 });
 
-
-
 $('#searchbox').on('input',function(){
-    var s = $(this).val();
+    var s = $(this).val().substr(0,1).toUpperCase() + $(this).val().substr(1);;
     if (!s) {
         $(".grid-item").show();
         count_grid();
         return;
     }
-    f = $('.grid-item').filter('[data-id^=' + $(this).val() + '], [data-district^=' + $(this).val() + '], [data-model^=' + $(this).val() + ']');
+    f = $('.grid-item').filter('[data-id^=' + s + '], [data-district^=' + s + '], [data-model^=' + s + ']');
     $(".grid-item").hide();
     $(f).show()
     count_grid();
