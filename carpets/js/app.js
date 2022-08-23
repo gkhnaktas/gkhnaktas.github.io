@@ -1,5 +1,4 @@
-const carpets = [
-  {
+const carpets = [{
     "id": 101,
     "d1": 110,
     "d2": 195,
@@ -806,131 +805,130 @@ function count_grid() {
   } else {
     $('#item_count').text('Listing ' + count + ' items...');
   }
-  
+
 }
 
 function ms() {
-    $("#masonry-grid").masonry({
-        columnWidth: 300,
-        itemSelector: ".grid-item",
-        isFitWidth: true
-    });
-    count_grid();
+  $("#masonry-grid").masonry({
+    columnWidth: 300,
+    itemSelector: ".grid-item",
+    isFitWidth: true
+  });
+  count_grid();
 }
 
-$("#masonry-grid").imagesLoaded(function() {
-    ms();
+$("#masonry-grid").imagesLoaded(function () {
+  ms();
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    const imageObserver = new IntersectionObserver((entries, imgObserver) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const lazyImage = entry.target;
-                lazyImage.src = lazyImage.dataset.src;
-                ms();
-            }
-        });
+document.addEventListener("DOMContentLoaded", function () {
+  const imageObserver = new IntersectionObserver((entries, imgObserver) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const lazyImage = entry.target;
+        lazyImage.src = lazyImage.dataset.src;
+        ms();
+      }
     });
-    const arr = document.querySelectorAll("img.lozad");
-    arr.forEach(v => {
-        imageObserver.observe(v);
-    });
+  });
+  const arr = document.querySelectorAll("img.lozad");
+  arr.forEach(v => {
+    imageObserver.observe(v);
+  });
 });
 
-$("#grid-filter li").click(function() {
-    var group = $(this).data("category");
-    var group_class = "." + group;
-    if (group == "*") {
-        $(".grid-item").show();
-        $("#masonry-grid").masonry("layout");
-    } else if (group != "") {
-        $(".grid-item").hide();
-        $(group_class).show();
-        $("#masonry-grid").masonry("layout");
-    } else {
-        $(".grid-item").show();
-        $("#masonry-grid").masonry("layout");
-    }
-    count_grid();
-});
-
-$('#searchbox').on('input',function(){
-    var s = $(this).val().substr(0,1).toUpperCase() + $(this).val().substr(1);;
-    if (!s) {
-        $(".grid-item").show();
-        count_grid();
-        return;
-    }
-    f = $('.grid-item').filter('[data-id^=' + s + '], [data-district^=' + s + '], [data-model^=' + s + ']');
-    $(".grid-item").hide();
-    $(f).show();
-    count_grid();
+$("#grid-filter li").click(function () {
+  var group = $(this).data("category");
+  var group_class = "." + group;
+  if (group == "*") {
+    $(".grid-item").show();
     $("#masonry-grid").masonry("layout");
+  } else if (group != "") {
+    $(".grid-item").hide();
+    $(group_class).show();
+    $("#masonry-grid").masonry("layout");
+  } else {
+    $(".grid-item").show();
+    $("#masonry-grid").masonry("layout");
+  }
+  count_grid();
+});
+
+$('#searchbox').on('input', function () {
+  var s = $(this).val().substr(0, 1).toUpperCase() + $(this).val().substr(1);;
+  if (!s) {
+    $(".grid-item").show();
+    count_grid();
+    return;
+  }
+  f = $('.grid-item').filter('[data-id^=' + s + '], [data-district^=' + s + '], [data-model^=' + s + ']');
+  $(".grid-item").hide();
+  $(f).show();
+  count_grid();
+  $("#masonry-grid").masonry("layout");
 });
 
 
-$(".luxbar-item").click(function(event) {
-    $("#luxbar-checkbox").prop("checked", false);
+$(".luxbar-item").click(function (event) {
+  $("#luxbar-checkbox").prop("checked", false);
 });
 
-$(".grid-item").click(function() {
-    const pic_urls = [];
-    pic_urls[0] = $(this).find("img").attr("src").replace($(this).data("id") + ".jpg", $(this).data("id") + "-1.jpeg").replace("/400", "/1920");
-    pic_urls[1] = pic_urls[0].replace("-1", "-2");
-    pic_urls[2] = pic_urls[0].replace("-1", "-3");
-    const dimensions = $(this).data("area") + " m<sup>2</sup> (" + parseInt($(this).data("d1")) + " x " + parseInt($(this).data("d2")) + ") cm";
-    const subHtml = `<div class="lightGallery-captions">
+$(".grid-item").click(function () {
+  const pic_urls = [];
+  pic_urls[0] = $(this).find("img").attr("src").replace($(this).data("id") + ".jpg", $(this).data("id") + "-1.jpeg").replace("/400", "/1920");
+  pic_urls[1] = pic_urls[0].replace("-1", "-2");
+  pic_urls[2] = pic_urls[0].replace("-1", "-3");
+  const dimensions = $(this).data("area") + " m<sup>2</sup> (" + parseInt($(this).data("d1")) + " x " + parseInt($(this).data("d2")) + ") cm";
+  const subHtml = `<div class="lightGallery-captions">
                       <h3>` + $(this).data("district") + ($(this).data("model") ? `, ` + $(this).data("model") : '') + ' (~' + $(this).data("age") + `  years old)</h3>
                       <h4>` + dimensions + `</h4>
                       <small>pid: ` + $(this).data("id") + `</small>
                     </div>`;
-    const dynamicGallery = lightGallery($(this), {
-        dynamic: true,
-        speed: 500,
-        dynamicEl: [ {
-            src: pic_urls[0],
-            thumb: pic_urls[0].replace("/1920", "/thumb"),
-            subHtml: subHtml
-        }, {
-            src: pic_urls[1],
-            thumb: pic_urls[1].replace("/1920", "/thumb"),
-            subHtml: subHtml
-        }, {
-            src: pic_urls[2],
-            thumb: pic_urls[2].replace("/1920", "/thumb"),
-            subHtml: subHtml
-        } ]
-    });
-    dynamicGallery.openGallery();
+  const dynamicGallery = lightGallery($(this), {
+    dynamic: true,
+    speed: 500,
+    dynamicEl: [{
+      src: pic_urls[0],
+      thumb: pic_urls[0].replace("/1920", "/thumb"),
+      subHtml: subHtml
+    }, {
+      src: pic_urls[1],
+      thumb: pic_urls[1].replace("/1920", "/thumb"),
+      subHtml: subHtml
+    }, {
+      src: pic_urls[2],
+      thumb: pic_urls[2].replace("/1920", "/thumb"),
+      subHtml: subHtml
+    }]
+  });
+  dynamicGallery.openGallery();
 });
 
 var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = window.location.search.substring(1),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
+  var sPageURL = window.location.search.substring(1),
+    sURLVariables = sPageURL.split('&'),
+    sParameterName,
+    i;
 
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
+  for (i = 0; i < sURLVariables.length; i++) {
+    sParameterName = sURLVariables[i].split('=');
 
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-        }
+    if (sParameterName[0] === sParam) {
+      return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
     }
-    return false;
+  }
+  return false;
 };
 
-$( document ).ready(function() {
-    var pid = getUrlParameter('pid');
-    if (pid) {
-      f = $('.grid-item').filter('[data-id=' + pid + ']');
-      if (f.length > 0) {
-        $('.grid-item').hide();
-        $(f).show();
-        count_grid();
-        $("#masonry-grid").masonry("layout");
-      }
+$(document).ready(function () {
+  var pid = getUrlParameter('pid');
+  if (pid) {
+    f = $('.grid-item').filter('[data-id=' + pid + ']');
+    if (f.length > 0) {
+      $('.grid-item').hide();
+      $(f).show();
+      count_grid();
+      $("#masonry-grid").masonry("layout");
     }
+  }
 });
-
