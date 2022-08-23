@@ -864,7 +864,7 @@ $('#searchbox').on('input',function(){
     }
     f = $('.grid-item').filter('[data-id^=' + s + '], [data-district^=' + s + '], [data-model^=' + s + ']');
     $(".grid-item").hide();
-    $(f).show()
+    $(f).show();
     count_grid();
     $("#masonry-grid").masonry("layout");
 });
@@ -905,4 +905,32 @@ $(".grid-item").click(function() {
     dynamicGallery.openGallery();
 });
 
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+    return false;
+};
+
+$( document ).ready(function() {
+    var pid = getUrlParameter('pid');
+    if (pid) {
+      f = $('.grid-item').filter('[data-id=' + pid + ']');
+      if (f.length > 0) {
+        $('.grid-item').hide();
+        $(f).show();
+        count_grid();
+        $("#masonry-grid").masonry("layout");
+      }
+    }
+});
 
