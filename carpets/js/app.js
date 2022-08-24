@@ -1,5 +1,4 @@
-const carpets = [
-  {
+const carpets = [{
     "id": 101,
     "d1": 110,
     "d2": 195,
@@ -934,10 +933,9 @@ $(document).ready(function () {
     }
   }
 
-  $('#searchbox').wrap('<span class="deleteicon"></span>').after($('<span>x</span>').click(function() {
+  $('#searchbox').wrap('<span class="deleteicon"></span>').after($('<span>x</span>').click(function () {
     $('.grid-item').show();
     $(this).prev('input').val('').trigger('change').focus();
   }));
 
 });
-
