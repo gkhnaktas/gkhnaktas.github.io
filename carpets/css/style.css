@@ -50,13 +50,13 @@ body {
     -webkit-border-radius: 5px;
 }
 
-.search input[type="search"] {
+.search input[type="text"] {
     border: 0px;
     width: 100%;
     padding: 10px 10px;
 }
 
-.search input[type="search"]:focus {
+.search input[type="text"]:focus {
     outline: 0;
 }
 
