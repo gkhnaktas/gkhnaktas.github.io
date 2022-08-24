@@ -763,7 +763,7 @@ const carpets = [
     "area": 5.91,
     "type": "Rug",
     "type2": "rug",
-    "district": "İRAN TEBRIZ",
+    "district": "İRAN TEBRİZ",
     "model": "MADALYON",
     "age": 50
   },
