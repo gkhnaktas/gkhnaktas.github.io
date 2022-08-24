@@ -6,7 +6,7 @@ body {
 }
 
 .content {
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
 #masonry-grid {
@@ -18,7 +18,7 @@ body {
     margin-bottom: 10px;
     border-style: solid;
     border-width: 0.5px;
-    border-color: grey;
+    border-color: #9d5543;
     background-color: #e0e0e0;
     cursor: pointer;
 }
@@ -42,7 +42,7 @@ body {
 .search {
     max-width: 1200px;
     margin: 0 auto;
-    margin-top: 90px;
+    margin-top: 70px;
     border: 2px solid #9D5543;
     overflow: auto;
     border-radius: 5px;
@@ -77,7 +77,7 @@ body {
 .count {
     max-width: 1200px;
     margin: 0 auto;
-    padding-top: 3px;
+    padding-top: 5px;
 }
 
 .count_small {
@@ -160,4 +160,5 @@ p.caption2 {
 
 .luxbar-item a {
     font-size: 1.5em;
+    padding-top: 14px !important;
 }
