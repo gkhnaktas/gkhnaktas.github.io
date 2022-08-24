@@ -1,4 +1,5 @@
-const carpets = [{
+const carpets = [
+  {
     "id": 101,
     "d1": 110,
     "d2": 195,
@@ -6,8 +7,8 @@ const carpets = [{
     "area": 2.15,
     "type": "Rug",
     "type2": "rug",
-    "district": "Niğde",
-    "model": "Madalyon",
+    "district": "NİĞDE",
+    "model": "MADALYON",
     "age": 50
   },
   {
@@ -18,8 +19,8 @@ const carpets = [{
     "area": 2.52,
     "type": "Rug",
     "type2": "rug",
-    "district": "Niğde Demirci",
-    "model": "Madalyon",
+    "district": "NİĞDE DEMİRCİ",
+    "model": "MADALYON",
     "age": 70
   },
   {
@@ -30,8 +31,8 @@ const carpets = [{
     "area": 1.71,
     "type": "Rug",
     "type2": "rug",
-    "district": "Ege Sındırgı",
-    "model": "Göbekli",
+    "district": "EGE SINDIRGI",
+    "model": "GÖBEKLİ",
     "age": 60
   },
   {
@@ -42,8 +43,8 @@ const carpets = [{
     "area": 1.85,
     "type": "Kilim",
     "type2": "kilim",
-    "district": "Iran",
-    "model": "Cicim, Eli Belinde",
+    "district": "İRAN",
+    "model": "CİCİM, ELİ BELİNDE",
     "age": 70
   },
   {
@@ -54,7 +55,7 @@ const carpets = [{
     "area": 2.77,
     "type": "Other",
     "type2": "other",
-    "district": "Niğde",
+    "district": "NİĞDE",
     "model": "",
     "age": 70
   },
@@ -66,8 +67,8 @@ const carpets = [{
     "area": 1.73,
     "type": "Kilim",
     "type2": "kilim",
-    "district": "Sivas",
-    "model": "Eli Belinde",
+    "district": "SİVAS",
+    "model": "ELİ BELİNDE",
     "age": 70
   },
   {
@@ -78,7 +79,7 @@ const carpets = [{
     "area": 2.02,
     "type": "Rug",
     "type2": "rug",
-    "district": "Aksaray Taşpınar",
+    "district": "AKSARAY TAŞPINAR",
     "model": "",
     "age": 80
   },
@@ -90,7 +91,7 @@ const carpets = [{
     "area": 1.17,
     "type": "Rug",
     "type2": "rug",
-    "district": "Aksaray Taşpınar Arısama",
+    "district": "AKSARAY TAŞPINAR ARISAMA",
     "model": "",
     "age": 50
   },
@@ -102,8 +103,8 @@ const carpets = [{
     "area": 2.36,
     "type": "Rug",
     "type2": "rug",
-    "district": "Balıkesir",
-    "model": "Toplu",
+    "district": "BALIKESIR",
+    "model": "TOPLU",
     "age": 70
   },
   {
@@ -114,8 +115,8 @@ const carpets = [{
     "area": 1.95,
     "type": "Kilim",
     "type2": "kilim",
-    "district": "Uşak",
-    "model": "Eli Belinde",
+    "district": "UŞAK",
+    "model": "ELİ BELİNDE",
     "age": 30
   },
   {
@@ -126,7 +127,7 @@ const carpets = [{
     "area": 2.07,
     "type": "Rug",
     "type2": "rug",
-    "district": "Konya",
+    "district": "KONYA",
     "model": "",
     "age": 80
   },
@@ -138,8 +139,8 @@ const carpets = [{
     "area": 2.29,
     "type": "Rug",
     "type2": "rug",
-    "district": "Ege Sındırgı",
-    "model": "Göbekli",
+    "district": "EGE SINDIRGI",
+    "model": "GÖBEKLİ",
     "age": 40
   },
   {
@@ -150,7 +151,7 @@ const carpets = [{
     "area": 0.86,
     "type": "Rug",
     "type2": "rug",
-    "district": "Aksaray",
+    "district": "AKSARAY",
     "model": "",
     "age": 70
   },
@@ -162,8 +163,8 @@ const carpets = [{
     "area": 1.75,
     "type": "Rug",
     "type2": "rug",
-    "district": "Kırşehir",
-    "model": "Mihraplı",
+    "district": "KIRŞEHİR",
+    "model": "MİHRAPLI",
     "age": 100
   },
   {
@@ -174,8 +175,8 @@ const carpets = [{
     "area": 3.33,
     "type": "Kilim",
     "type2": "kilim",
-    "district": "Sivas",
-    "model": "Selçuklu",
+    "district": "SİVAS",
+    "model": "SELÇUKLU",
     "age": "80-100"
   },
   {
@@ -186,8 +187,8 @@ const carpets = [{
     "area": 2.26,
     "type": "Rug",
     "type2": "rug",
-    "district": "Niğde Demirci",
-    "model": "Madalyon",
+    "district": "NİĞDE DEMIRCI",
+    "model": "MADALYON",
     "age": 60
   },
   {
@@ -198,8 +199,8 @@ const carpets = [{
     "area": 1.2,
     "type": "Rug",
     "type2": "rug",
-    "district": "Niğde",
-    "model": "Mihraplı",
+    "district": "NİĞDE",
+    "model": "MİHRAPLI",
     "age": 100
   },
   {
@@ -210,8 +211,8 @@ const carpets = [{
     "area": 2.01,
     "type": "Rug",
     "type2": "rug",
-    "district": "Konya Taşpınar Arısama",
-    "model": "Madalyon",
+    "district": "KONYA TAŞPINAR ARISAMA",
+    "model": "MADALYON",
     "age": 60
   },
   {
@@ -222,8 +223,8 @@ const carpets = [{
     "area": 3.1,
     "type": "Rug",
     "type2": "rug",
-    "district": "Konya Taşpınar",
-    "model": "Sinekli",
+    "district": "KONYA TAŞPINAR",
+    "model": "SİNEKLİ",
     "age": 70
   },
   {
@@ -234,8 +235,8 @@ const carpets = [{
     "area": 4.35,
     "type": "Kilim",
     "type2": "kilim",
-    "district": "Konya",
-    "model": "Cicim, Eli Belinde",
+    "district": "KONYA",
+    "model": "CİCİM, ELİ BELİNDE",
     "age": 50
   },
   {
@@ -246,7 +247,7 @@ const carpets = [{
     "area": 4.79,
     "type": "Other",
     "type2": "other",
-    "district": "Tekirdağ Şarköy",
+    "district": "TEKİRDAĞ ŞARKÖY",
     "model": "",
     "age": 100
   },
@@ -258,8 +259,8 @@ const carpets = [{
     "area": 3.21,
     "type": "Rug",
     "type2": "rug",
-    "district": "Afgan",
-    "model": "Toplu",
+    "district": "AFGAN",
+    "model": "TOPLU",
     "age": 70
   },
   {
@@ -270,8 +271,8 @@ const carpets = [{
     "area": 3.59,
     "type": "Rug",
     "type2": "rug",
-    "district": "Türkmen",
-    "model": "Karpuzlu",
+    "district": "TÜRKMEN",
+    "model": "KARPUZLU",
     "age": 80
   },
   {
@@ -282,7 +283,7 @@ const carpets = [{
     "area": 2.71,
     "type": "Rug",
     "type2": "rug",
-    "district": "Iran Tebriz",
+    "district": "İRAN TEBRIZ",
     "model": "",
     "age": 70
   },
@@ -294,8 +295,8 @@ const carpets = [{
     "area": 2.48,
     "type": "Rug",
     "type2": "rug",
-    "district": "Isparta",
-    "model": "Zeki Müren",
+    "district": "ISPARTA",
+    "model": "ZEKI MÜREN",
     "age": 60
   },
   {
@@ -306,8 +307,8 @@ const carpets = [{
     "area": 3.65,
     "type": "Rug",
     "type2": "rug",
-    "district": "Isparta",
-    "model": "Anonim",
+    "district": "ISPARTA",
+    "model": "ANONİM",
     "age": 60
   },
   {
@@ -318,8 +319,8 @@ const carpets = [{
     "area": 2.58,
     "type": "Rug",
     "type2": "rug",
-    "district": "Niğde Demirci",
-    "model": "Madalyon",
+    "district": "NİĞDE DEMIRCI",
+    "model": "MADALYON",
     "age": 70
   },
   {
@@ -330,8 +331,8 @@ const carpets = [{
     "area": 2.67,
     "type": "Rug",
     "type2": "rug",
-    "district": "Konya Taşpınar",
-    "model": "Madalyon Sinekli",
+    "district": "KONYA TAŞPINAR",
+    "model": "MADALYON SİNEKLİ",
     "age": 50
   },
   {
@@ -342,8 +343,8 @@ const carpets = [{
     "area": 2.69,
     "type": "Rug",
     "type2": "rug",
-    "district": "Konya Taşpınar",
-    "model": "Madalyon Sinekli",
+    "district": "KONYA TAŞPINAR",
+    "model": "MADALYON SİNEKLİ",
     "age": "50-60"
   },
   {
@@ -354,8 +355,8 @@ const carpets = [{
     "area": 2.23,
     "type": "Rug",
     "type2": "rug",
-    "district": "Niğde Bor",
-    "model": "Madalyon",
+    "district": "NİĞDE BOR",
+    "model": "MADALYON",
     "age": 70
   },
   {
@@ -366,8 +367,8 @@ const carpets = [{
     "area": 2.52,
     "type": "Rug",
     "type2": "rug",
-    "district": "Isparta",
-    "model": "Zeki Müren",
+    "district": "ISPARTA",
+    "model": "ZEKI MÜREN",
     "age": 60
   },
   {
@@ -378,8 +379,8 @@ const carpets = [{
     "area": 3.32,
     "type": "Rug",
     "type2": "rug",
-    "district": "Konya Taşpınar",
-    "model": "Arısaman",
+    "district": "KONYA TAŞPINAR",
+    "model": "ARISAMAN",
     "age": 50
   },
   {
@@ -390,8 +391,8 @@ const carpets = [{
     "area": 3.67,
     "type": "Rug",
     "type2": "rug",
-    "district": "Kayseri Yahyalı",
-    "model": "Zincirli",
+    "district": "KAYSERİ YAHYALI",
+    "model": "ZİNCİRLİ",
     "age": 40
   },
   {
@@ -402,8 +403,8 @@ const carpets = [{
     "area": 3.52,
     "type": "Rug",
     "type2": "rug",
-    "district": "Kırşehir",
-    "model": "Eli Belinde",
+    "district": "KIRŞEHİR",
+    "model": "ELİ BELİNDE",
     "age": 70
   },
   {
@@ -414,8 +415,8 @@ const carpets = [{
     "area": 6.11,
     "type": "Rug",
     "type2": "rug",
-    "district": "Isparta",
-    "model": "Silsile",
+    "district": "ISPARTA",
+    "model": "SİLSİLE",
     "age": 60
   },
   {
@@ -426,7 +427,7 @@ const carpets = [{
     "area": 8.31,
     "type": "Other",
     "type2": "other",
-    "district": "Sivas",
+    "district": "SİVAS",
     "model": "",
     "age": 70
   },
@@ -438,8 +439,8 @@ const carpets = [{
     "area": 5.82,
     "type": "Kilim",
     "type2": "kilim",
-    "district": "Kayseri",
-    "model": "Eli Belinde",
+    "district": "KAYSERİ",
+    "model": "ELİ BELİNDE",
     "age": 100
   },
   {
@@ -450,8 +451,8 @@ const carpets = [{
     "area": 5.06,
     "type": "Kilim",
     "type2": "kilim",
-    "district": "Denizli",
-    "model": "Eli Belinde",
+    "district": "DENİZLİ",
+    "model": "ELİ BELİNDE",
     "age": 40
   },
   {
@@ -462,7 +463,7 @@ const carpets = [{
     "area": 5.78,
     "type": "Other",
     "type2": "other",
-    "district": "Denizli",
+    "district": "DENİZLİ",
     "model": "",
     "age": 60
   },
@@ -474,8 +475,8 @@ const carpets = [{
     "area": 5.32,
     "type": "Kilim",
     "type2": "kilim",
-    "district": "Denizli",
-    "model": "Eli Belinde",
+    "district": "DENİZLİ",
+    "model": "ELİ BELİNDE",
     "age": 60
   },
   {
@@ -486,8 +487,8 @@ const carpets = [{
     "area": 0.45,
     "type": "Other",
     "type2": "other",
-    "district": "Malatya",
-    "model": "Eli Belinde",
+    "district": "MALATYA",
+    "model": "ELİ BELİNDE",
     "age": 80
   },
   {
@@ -498,8 +499,8 @@ const carpets = [{
     "area": 0.66,
     "type": "Kilim",
     "type2": "kilim",
-    "district": "Konya",
-    "model": "Cicim",
+    "district": "KONYA",
+    "model": "CİCİM",
     "age": 70
   },
   {
@@ -510,7 +511,7 @@ const carpets = [{
     "area": 1.64,
     "type": "Other",
     "type2": "other",
-    "district": "Konya",
+    "district": "KONYA",
     "model": "",
     "age": 70
   },
@@ -522,7 +523,7 @@ const carpets = [{
     "area": 0.95,
     "type": "Other",
     "type2": "other",
-    "district": "Konya",
+    "district": "KONYA",
     "model": "",
     "age": 70
   },
@@ -534,8 +535,8 @@ const carpets = [{
     "area": 13.32,
     "type": "Rug",
     "type2": "rug",
-    "district": "Isparta",
-    "model": "Madalyon",
+    "district": "ISPARTA",
+    "model": "MADALYON",
     "age": 60
   },
   {
@@ -546,8 +547,8 @@ const carpets = [{
     "area": 7.82,
     "type": "Rug",
     "type2": "rug",
-    "district": "Isparta",
-    "model": "Madalyon",
+    "district": "ISPARTA",
+    "model": "MADALYON",
     "age": 60
   },
   {
@@ -558,8 +559,8 @@ const carpets = [{
     "area": 9.58,
     "type": "Rug",
     "type2": "rug",
-    "district": "Konya Ladik",
-    "model": "Madalyon",
+    "district": "KONYA LADIK",
+    "model": "MADALYON",
     "age": 50
   },
   {
@@ -570,8 +571,8 @@ const carpets = [{
     "area": 4.14,
     "type": "Rug",
     "type2": "rug",
-    "district": "Uşak",
-    "model": "Selçuklu",
+    "district": "UŞAK",
+    "model": "SELÇUKLU",
     "age": 100
   },
   {
@@ -582,8 +583,8 @@ const carpets = [{
     "area": 4.16,
     "type": "Rug",
     "type2": "rug",
-    "district": "Kayseri Bünyan",
-    "model": "Sozsuzluk",
+    "district": "KAYSERİ BÜNYAN",
+    "model": "SONSUZLUK",
     "age": 50
   },
   {
@@ -594,8 +595,8 @@ const carpets = [{
     "area": 8.49,
     "type": "Kilim",
     "type2": "kilim",
-    "district": "Sivas",
-    "model": "Tırnaklı",
+    "district": "SİVAS",
+    "model": "TIRNAKLI",
     "age": 80
   },
   {
@@ -606,8 +607,8 @@ const carpets = [{
     "area": 7.92,
     "type": "Rug",
     "type2": "rug",
-    "district": "Isparta",
-    "model": "Serpme Çiçek",
+    "district": "ISPARTA",
+    "model": "SERPME ÇIÇEK",
     "age": 60
   },
   {
@@ -618,7 +619,7 @@ const carpets = [{
     "area": 8.61,
     "type": "Rug",
     "type2": "rug",
-    "district": "Afyon Sandıklı",
+    "district": "AFYON SANDIKLI",
     "model": "",
     "age": 60
   },
@@ -630,8 +631,8 @@ const carpets = [{
     "area": 6.78,
     "type": "Rug",
     "type2": "rug",
-    "district": "Isparta",
-    "model": "Madalyon",
+    "district": "ISPARTA",
+    "model": "MADALYON",
     "age": 70
   },
   {
@@ -642,8 +643,8 @@ const carpets = [{
     "area": 9.78,
     "type": "Rug",
     "type2": "rug",
-    "district": "Hereke",
-    "model": "Yedi Dağın Çiçeği",
+    "district": "HEREKE",
+    "model": "YEDİ DAĞIN ÇİÇEĞİ",
     "age": 30
   },
   {
@@ -654,8 +655,8 @@ const carpets = [{
     "area": 9.03,
     "type": "Rug",
     "type2": "rug",
-    "district": "Kars Şahseven",
-    "model": "Göbekli",
+    "district": "KARS ŞAHSEVEN",
+    "model": "GÖBEKLİ",
     "age": 60
   },
   {
@@ -666,7 +667,7 @@ const carpets = [{
     "area": 5.9,
     "type": "Rug",
     "type2": "rug",
-    "district": "Kayseri Bünyan",
+    "district": "KAYSERİ BÜNYAN",
     "model": "",
     "age": "40-50"
   },
@@ -678,8 +679,8 @@ const carpets = [{
     "area": 7.11,
     "type": "Rug",
     "type2": "rug",
-    "district": "Isparta",
-    "model": "Göbekli",
+    "district": "ISPARTA",
+    "model": "GÖBEKLİ",
     "age": 70
   },
   {
@@ -690,8 +691,8 @@ const carpets = [{
     "area": 5.9,
     "type": "Rug",
     "type2": "rug",
-    "district": "Kayseri Bünyan",
-    "model": "Serpme Çiçek",
+    "district": "KAYSERİ BÜNYAN",
+    "model": "SERPME ÇİÇEK",
     "age": 50
   },
   {
@@ -702,8 +703,8 @@ const carpets = [{
     "area": 7.1,
     "type": "Rug",
     "type2": "rug",
-    "district": "Malatya",
-    "model": "Toplu",
+    "district": "MALATYA",
+    "model": "TOPLU",
     "age": 70
   },
   {
@@ -714,8 +715,8 @@ const carpets = [{
     "area": 5.26,
     "type": "Rug",
     "type2": "rug",
-    "district": "Isparta",
-    "model": "Yedi Dağın Çiçeği",
+    "district": "ISPARTA",
+    "model": "YEDİ DAĞIN ÇİÇEĞİ",
     "age": 60
   },
   {
@@ -726,8 +727,8 @@ const carpets = [{
     "area": 6.06,
     "type": "Rug",
     "type2": "rug",
-    "district": "Malatya",
-    "model": "Toplu",
+    "district": "MALATYA",
+    "model": "TOPLU",
     "age": 70
   },
   {
@@ -738,8 +739,8 @@ const carpets = [{
     "area": 5.9,
     "type": "Rug",
     "type2": "rug",
-    "district": "Kayseri Bünyan",
-    "model": "Binbir Gece",
+    "district": "KAYSERİ BÜNYAN",
+    "model": "BİNBİR GECE",
     "age": 60
   },
   {
@@ -750,8 +751,8 @@ const carpets = [{
     "area": 6.15,
     "type": "Rug",
     "type2": "rug",
-    "district": "Kayseri Bünyan",
-    "model": "Madalyon",
+    "district": "KAYSERİ BÜNYAN",
+    "model": "MADALYON",
     "age": 50
   },
   {
@@ -762,8 +763,8 @@ const carpets = [{
     "area": 5.91,
     "type": "Rug",
     "type2": "rug",
-    "district": "Iran Tebriz",
-    "model": "Madalyon",
+    "district": "İRAN TEBRIZ",
+    "model": "MADALYON",
     "age": 50
   },
   {
@@ -774,8 +775,8 @@ const carpets = [{
     "area": 9.86,
     "type": "Rug",
     "type2": "rug",
-    "district": "Isparta",
-    "model": "Serpme Çiçek",
+    "district": "ISPARTA",
+    "model": "SERPME ÇİÇEK",
     "age": 60
   },
   {
@@ -786,8 +787,8 @@ const carpets = [{
     "area": 6.05,
     "type": "Rug",
     "type2": "rug",
-    "district": "Çin",
-    "model": "Madalyon Toplu Kabartma",
+    "district": "ÇİN",
+    "model": "MADALYON TOPLU KABARTMA",
     "age": 30
   }
 ];
@@ -880,8 +881,8 @@ $(".grid-item").click(function () {
   pic_urls[2] = pic_urls[0].replace("-1", "-3");
   const dimensions = $(this).data("area") + " m<sup>2</sup> (" + parseInt($(this).data("d1")) + " x " + parseInt($(this).data("d2")) + ") cm";
   const subHtml = `<div class="lightGallery-captions">
-                      <h3>` + $(this).data("district") + ($(this).data("model") ? `, ` + $(this).data("model") : '') + ' (~' + $(this).data("age") + `  years old)</h3>
-                      <h4>` + dimensions + `</h4>
+                      <p class="caption1">` + $(this).data("district") + ($(this).data("model") ? `, ` + $(this).data("model") : '') + ' (~' + $(this).data("age") + `  years old)</p>
+                      <p class="caption2">` + dimensions + `</p>
                       <small>pid: ` + $(this).data("id") + `</small>
                     </div>`;
   const dynamicGallery = window.lightGallery($(this), {
