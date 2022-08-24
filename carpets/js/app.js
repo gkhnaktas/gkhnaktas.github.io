@@ -187,7 +187,7 @@ const carpets = [
     "area": 2.26,
     "type": "Rug",
     "type2": "rug",
-    "district": "NİĞDE DEMIRCI",
+    "district": "NİĞDE DEMİRCİ",
     "model": "MADALYON",
     "age": 60
   },
@@ -319,7 +319,7 @@ const carpets = [
     "area": 2.58,
     "type": "Rug",
     "type2": "rug",
-    "district": "NİĞDE DEMIRCI",
+    "district": "NİĞDE DEMİRCİ",
     "model": "MADALYON",
     "age": 70
   },
@@ -856,7 +856,7 @@ $("#grid-filter li").click(function () {
 });
 
 $('#searchbox').on('input', function () {
-  var s = $(this).val().substr(0, 1).toUpperCase() + $(this).val().substr(1);;
+  var s = $(this).val().toUpperCase();
   if (!s) {
     $(".grid-item").show();
     count_grid();
