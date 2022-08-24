@@ -925,11 +925,18 @@ $(document).ready(function () {
   if (pid) {
     f = $('.grid-item').filter('[data-id=' + pid + ']');
     if (f.length > 0) {
+      $('#searchbox').val(pid);
       $('.grid-item').hide();
       $(f).show();
       count_grid();
       $("#masonry-grid").masonry("layout");
     }
   }
+
+  $('#searchbox').wrap('<span class="deleteicon"></span>').after($('<span>x</span>').click(function() {
+    $('.grid-item').show();
+    $(this).prev('input').val('').trigger('change').focus();
+  }));
+
 });
 
