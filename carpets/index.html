@@ -48,7 +48,7 @@
   <div class="gutter-sizer"></div>
   {% for (var i=0; i<o.length; i++) { %}
     <div class="grid-item {%=o[i].type2%}" data-id="{%=o[i].id%}" data-d1="{%=o[i].d1%}" data-d2="{%=o[i].d2%}" data-area="{%=o[i].area%}" data-type="{%=o[i].type%}" data-type2="{%=o[i].type2%}" data-district="{%=o[i].district%}" data-model="{%=o[i].model%}" data-age="{%=o[i].age%}">
-      <img class="lozad" src="./img/100/{%=o[i].id%}.jpg" data-src="./img/400/{%=o[i].id%}.jpg" alt="{%=o[i].id%}">
+      <img class="lozad" src="./img/thumb/{%=o[i].id%}.jpg" data-src="./img/400/{%=o[i].id%}.jpg" alt="{%=o[i].id%}">
       <div class="info">
         <span class="info_text">{%=o[i].district%}{% if (o[i].model) { %} - {%=o[i].model%} {% } %}</span>
       </div>

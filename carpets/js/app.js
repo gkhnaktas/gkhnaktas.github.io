@@ -792,7 +792,7 @@ const carpets = [{
   }
 ];
 
-
+/* document.getElementById("masonry-grid").innerHTML = tmpl("tmpl-demo", carpets.slice(0, 10)); */
 document.getElementById("masonry-grid").innerHTML = tmpl("tmpl-demo", carpets);
 
 function count_grid() {
