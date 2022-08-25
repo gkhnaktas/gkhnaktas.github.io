@@ -934,6 +934,9 @@ $(document).ready(function () {
   }
 
   $('#searchbox').wrap('<span class="deleteicon"></span>').after($('<span>x</span>').click(function () {
+    if (!$(this).prev('input').val()) {
+      return;
+    }
     $('.grid-item').show();
     $(this).prev('input').val('').trigger('change').focus();
   }));
