@@ -895,7 +895,7 @@ function count_grid() {
 function ms() {
   $("#masonry-grid").masonry({
     columnWidth: 300,
-    itemSelector: ".grid-item",
+    itemSelector: ".dynamic-gallery-selector",
     isFitWidth: true
   });
   count_grid();
@@ -957,30 +957,36 @@ $(".luxbar-item").click(function (event) {
   $("#luxbar-checkbox").prop("checked", false);
 });
 
-$(".grid-item").click(function () {
+$(".dynamic-gallery-selector").click(function () {
+  const se = $(this).find('div.grid-item');
   const pic_urls = [];
-  pic_urls[0] = $(this).find("img").attr("src").replace($(this).data("id") + ".jpg", $(this).data("id") + "-1.jpeg").replace("/400", "/1920");
+  pic_urls[0] = se.find("img").attr("src").replace(se.data("id") + ".jpg", se.data("id") + "-1.jpeg").replace("/400", "/1920");
   pic_urls[1] = pic_urls[0].replace("-1", "-2");
   pic_urls[2] = pic_urls[0].replace("-1", "-3");
-  const dimensions = $(this).data("area") + " m<sup>2</sup> (" + parseInt($(this).data("d1")) + " x " + parseInt($(this).data("d2")) + ") cm";
+  const dimensions = se.data("area") + " m<sup>2</sup> (" + parseInt(se.data("d1")) + " x " + parseInt(se.data("d2")) + ") cm";
   const subHtml = `<div class="lightGallery-captions">
-                      <p class="caption1">` + $(this).data("district") + ($(this).data("model") ? `, ` + $(this).data("model") : '') + ' (~' + $(this).data("age") + `  years old)</p>
+                      <p class="caption1">` + se.data("district") + (se.data("model") ? `, ` + se.data("model") : '') + ' (~' + se.data("age") + `  years old)</p>
                       <p class="caption2">` + dimensions + `</p>
-                      <small>pid: ` + $(this).data("id") + `</small>
+                      <small>pid: ` + se.data("id") + `</small>
                     </div>`;
-  const dynamicGallery = window.lightGallery($(this), {
+  const dynamicGallery = window.lightGallery($(this).get(0), {
     dynamic: true,
+    plugins: [lgThumbnail, lgZoom, lgFullscreen, ],
+    mode: 'lg-fade',
+    speed: 500,
+    showZoomInOutIcons: true,
+    actualSize: false,
     dynamicEl: [{
       src: pic_urls[0],
-      thumb: pic_urls[0].replace("/1920", "/thumb"),
+      thumb: pic_urls[0].replace('/1920', '/thumb'),
       subHtml: subHtml
     }, {
       src: pic_urls[1],
-      thumb: pic_urls[1].replace("/1920", "/thumb"),
+      thumb: pic_urls[1].replace('/1920', '/thumb'),
       subHtml: subHtml
     }, {
       src: pic_urls[2],
-      thumb: pic_urls[2].replace("/1920", "/thumb"),
+      thumb: pic_urls[2].replace('/1920', '/thumb'),
       subHtml: subHtml
     }]
   });

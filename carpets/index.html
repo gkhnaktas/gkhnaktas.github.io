@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdn.rawgit.com/balzss/luxbar/ae5835e2/build/luxbar.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css">
   <title>Rugs & Kilims</title>
 </head>
 
@@ -47,12 +47,14 @@
 <script type="text/x-tmpl" id="tmpl-demo">
   <div class="gutter-sizer"></div>
   {% for (var i=0; i<o.length; i++) { %}
+  <div class="dynamic-gallery-selector">
     <div class="grid-item {%=o[i].type2%}" data-id="{%=o[i].id%}" data-d1="{%=o[i].d1%}" data-d2="{%=o[i].d2%}" data-area="{%=o[i].area%}" data-type="{%=o[i].type%}" data-type2="{%=o[i].type2%}" data-district="{%=o[i].district%}" data-model="{%=o[i].model%}" data-age="{%=o[i].age%}">
-      <img class="lozad" src="./img/thumb/{%=o[i].id%}.jpg" data-src="./img/400/{%=o[i].id%}.jpg" alt="{%=o[i].id%}">
+      <img class="lozad" src="./img/80/{%=o[i].id%}.jpg" data-src="./img/400/{%=o[i].id%}.jpg" alt="{%=o[i].id%}">
       <div class="info">
         <span class="info_text">{%=o[i].district%}{% if (o[i].model) { %} - {%=o[i].model%} {% } %}</span>
       </div>
     </div>
+  </div>
   {% } %}
   <div class="gutter-sizer"></div>
 </script>
@@ -60,6 +62,9 @@
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/fullscreen/lg-fullscreen.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js"></script>
 <script src="js/app.js"></script>
 
