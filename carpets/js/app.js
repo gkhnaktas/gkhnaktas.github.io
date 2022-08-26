@@ -1006,6 +1006,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
 
 $(document).ready(function () {
   var pid = getUrlParameter('pid');
+  var model = getUrlParameter('model');
   if (pid) {
     f = $('.grid-item').filter('[data-id=' + pid + ']');
     if (f.length > 0) {
@@ -1017,12 +1018,23 @@ $(document).ready(function () {
     }
   }
 
-  $('#searchbox').wrap('<span class="deleteicon"></span>').after($('<span>x</span>').click(function () {
-    if (!$(this).prev('input').val()) {
-      return;
+  if (model) {
+    f = $('.grid-item').filter('[data-model=' + model + ']');
+    if (f.length > 0) {
+      $('#searchbox').val(model);
+      $('.grid-item').hide();
+      $(f).show();
+      count_grid();
+      $("#masonry-grid").masonry("layout");
     }
-    $('.grid-item').show();
-    $(this).prev('input').val('').trigger('change').focus();
-  }));
+  }
 
 });
+
+$('#searchbox').wrap('<span class="deleteicon"></span>').after($('<span>x</span>').click(function () {
+  if (!$(this).prev('input').val()) {
+    return;
+  }
+  $('.grid-item').show();
+  $(this).prev('input').val('').trigger('change').focus();
+}));
