@@ -943,12 +943,14 @@ $('#searchbox').on('input', function () {
   if (!s) {
     $(".grid-item").show();
     count_grid();
+    $('#deleteX').hide();
     return;
   }
   f = $('.grid-item').filter('[data-id^=' + s + '], [data-district^=' + s + '], [data-model^=' + s + ']');
   $(".grid-item").hide();
   $(f).show();
   count_grid();
+  $('#deleteX').show();
   $("#masonry-grid").masonry("layout");
 });
 
@@ -1035,12 +1037,19 @@ $(document).ready(function () {
     }
   }
 
+  if ($('#searchbox').val()) {
+    $('#deleteX').show();
+  } else {
+    $('#deleteX').hide();
+  }
+
 });
 
-$('#searchbox').wrap('<span class="deleteicon"></span>').after($('<span>x</span>').click(function () {
+$('#searchbox').wrap('<span class="deleteicon"></span>').after($('<span id="deleteX">x</span>').click(function () {
   if (!$(this).prev('input').val()) {
     return;
   }
   $('.grid-item').show();
   $(this).prev('input').val('').trigger('change').focus();
+  $('#deleteX').hide();
 }));
