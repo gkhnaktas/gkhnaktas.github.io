@@ -6,9 +6,9 @@ const carpets = [{
     "area": 4.29,
     "type": "Rug",
     "type2": "rug",
-    "district": "NULL",
-    "model": "NULL",
-    "age": "NULL"
+    "district": "SİVAS",
+    "model": "SANDIKLI",
+    "age": "70-80"
   },
   {
     "id": 176,
@@ -18,9 +18,9 @@ const carpets = [{
     "area": 3.97,
     "type": "Rug",
     "type2": "rug",
-    "district": "NULL",
-    "model": "NULL",
-    "age": "NULL"
+    "district": "SİVAS",
+    "model": "ŞİRVAN BORDÖRLÜ SANDIKLI",
+    "age": "80-100"
   },
   {
     "id": 177,
@@ -30,9 +30,9 @@ const carpets = [{
     "area": 2.75,
     "type": "Rug",
     "type2": "rug",
-    "district": "NULL",
-    "model": "NULL",
-    "age": "NULL"
+    "district": "SİVAS",
+    "model": "7 GÖBEK",
+    "age": 80
   },
   {
     "id": 178,
@@ -42,9 +42,9 @@ const carpets = [{
     "area": 2.34,
     "type": "Rug",
     "type2": "rug",
-    "district": "NULL",
-    "model": "NULL",
-    "age": "NULL"
+    "district": "SİVAS",
+    "model": "SERPME ÇİÇEK",
+    "age": 80
   },
   {
     "id": 179,
@@ -54,9 +54,9 @@ const carpets = [{
     "area": 3.53,
     "type": "Rug",
     "type2": "rug",
-    "district": "NULL",
-    "model": "NULL",
-    "age": "NULL"
+    "district": "SİVAS CEZAEVİ",
+    "model": "CİVİR GÖBEK",
+    "age": 60
   },
   {
     "id": 180,
@@ -66,9 +66,9 @@ const carpets = [{
     "area": 5.48,
     "type": "Kilim",
     "type2": "kilim",
-    "district": "NULL",
-    "model": "NULL",
-    "age": "NULL"
+    "district": "SİVAS",
+    "model": "ELİ BELİNDE",
+    "age": "80-90"
   },
   {
     "id": 181,
@@ -78,9 +78,9 @@ const carpets = [{
     "area": 4.06,
     "type": "Kilim",
     "type2": "kilim",
-    "district": "NULL",
-    "model": "NULL",
-    "age": "NULL"
+    "district": "SİVAS",
+    "model": "SİNEKLİ",
+    "age": 70
   },
   {
     "id": 101,
@@ -702,8 +702,8 @@ const carpets = [{
     "area": 8.61,
     "type": "Rug",
     "type2": "rug",
-    "district": "AFYON SANDIKLI",
-    "model": "",
+    "district": "AFYON",
+    "model": "SANDIKLI",
     "age": 60
   },
   {
@@ -846,7 +846,7 @@ const carpets = [{
     "area": 5.91,
     "type": "Rug",
     "type2": "rug",
-    "district": "İRAN TEBRİZ",
+    "district": "İRAN TEBRIZ",
     "model": "MADALYON",
     "age": 50
   },
