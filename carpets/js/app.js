@@ -876,6 +876,8 @@ const carpets = [{
   }
 ];
 
+const listed = [102, 104, 106, 109, 110, 111, 112, 114, 115, 116, 117, 118, 120, 121, 122, 123, 124, 125, 126, 128, 129, 130, 136, 146, 150, 155, 158, 159, 164, 166, 168, 170, 171, 175, 176, 177, 178, 179, 180, 181]
+
 /* document.getElementById("masonry-grid").innerHTML = tmpl("tmpl-demo", carpets.slice(0, 10)); */
 document.getElementById("masonry-grid").innerHTML = tmpl("tmpl-demo", carpets);
 
@@ -924,17 +926,27 @@ document.addEventListener("DOMContentLoaded", function () {
 $("#grid-filter li").click(function () {
   var group = $(this).data("category");
   var group_class = "." + group;
+
+  if (group == "ul") {
+    $(".grid-item").show();
+    $( ".grid-item" ).each(function(index) {
+      if (listed.includes(parseInt($(this).data("id")))) {
+        $(this).hide()
+      }
+    });
+    $("#masonry-grid").masonry("layout");
+    return false;
+  }
+
   if (group == "*") {
     $(".grid-item").show();
-    $("#masonry-grid").masonry("layout");
   } else if (group != "") {
     $(".grid-item").hide();
     $(group_class).show();
-    $("#masonry-grid").masonry("layout");
   } else {
     $(".grid-item").show();
-    $("#masonry-grid").masonry("layout");
   }
+  $("#masonry-grid").masonry("layout");
   count_grid();
 });
 
