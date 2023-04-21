@@ -1,1 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rug Collection</title>
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" 
+        integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" />
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lightgallery.min.css" 
+        integrity="sha512-F2E+YYE1gkt0T5TVajAslgDfTEUQKtlu4ralVq78ViNxhKXQLrgQLLie8u1tVdG2vWnB3ute4hcdbiBtvJQh0g==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" />
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css" 
+        integrity="sha512-CRFv/YVJyElHXTiMgnhWKd2f04Hd/BUJkwcyqYmlpL1ugSYW23nNRazLk960mlz7dugTrETCGGjcsnspPOS6qA==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" />
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lg-zoom.min.css" 
+        integrity="sha512-vIrTyLijDDcUJrQGs1jduUCSVa3+A2DaWpVfNyj4lmXkqURVQJ8LL62nebC388QV3P4yFBSt/ViDX8LRW0U6uw==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" />
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lg-thumbnail.min.css" 
+        integrity="sha512-GRxDpj/bx6/I4y6h2LE5rbGaqRcbTu4dYhaTewlS8Nh9hm/akYprvOTZD7GR+FRCALiKfe8u1gjvWEEGEtoR6g==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" />
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lg-fullscreen.min.css" 
+        integrity="sha512-JlgW3xkdBcsdFiSfFk5Cfj3sTgo3hA63/lPmZ4SXJegICSLcH43BuwDNlC9fqoUy2h3Tma8Eo48xlZ5XMjM+aQ==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" />
+    <style>
+        body {
+        padding: 40px;
+        color: #0e3481;
+        min-height: 100vh;
+        }
+        .gallery-info {
+        text-align: center;
+        display: block;
+        font-size: 12px;
+        opacity: 0.7;
+        font-style: italic;
+        }
 
+        .header .lead {
+        max-width: 620px;
+        }
+
+        /** Below CSS is completely optional **/
+
+        .gallery-item {
+        width: 200px;
+        padding: 5px;
+        }
+
+        .lg-sub-html p i {
+            font-size: 8px;
+            padding-left: 12px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="header d-flex flex-column align-items-center">
+        <h1 class="display-6 mt-3 mb-0">Rug Collection</h1>
+        <p class="lead mt-2 mb-4">
+            Find the rugs avaliable, contact for more info.
+        </p>
+    </div>
+
+    <span class="gallery-info">Click on any image to open gallery. </span>
+    <div class="container-sm">
+        <div class="row justify-content-center">
+            <div class="col col-md-10">
+                <div class="gallery-container" id="animated-thumbnails-gallery">
+                    <a 
+                        data-lg-size="2000-3175" 
+                        class="gallery-item" 
+                        data-src="./img/101-1.jpg" 
+                        data-sub-html="<h4>Niğde, Madalyon, ~1970s</h4><p>(110x195)cm (3.6x6.4)ft<i>P101</i></p>">
+                            <img alt="Niğde, Madalyon, ~1970s" class="img-responsive" src="./img/thumb/101-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3035" 
+                        class="gallery-item" 
+                        data-src="./img/114-1.jpg" 
+                        data-sub-html="<h4>Ege, Sındırgı, Göbekli, ~1980s</h4><p>(125x185)cm (4.1x6.1)ft<i>P114</i></p>">
+                            <img alt="Ege, Sındırgı, Göbekli, ~1980s" class="img-responsive" src="./img/thumb/114-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-2862" 
+                        class="gallery-item" 
+                        data-src="./img/113-1.jpg" 
+                        data-sub-html="<h4>Konya, ~1940s</h4><p>(120x170)cm (3.9x5.6)ft<i>P113</i></p>">
+                            <img alt="Konya, ~1940s" class="img-responsive" src="./img/thumb/113-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3183" 
+                        class="gallery-item" 
+                        data-src="./img/116-1.jpg" 
+                        data-sub-html="<h4>Kırşehir, Mihraplı, ~1920s</h4><p>(105x165)cm (3.4x5.4)ft <i>P116</i</p>">
+                            <img alt="Kırşehir, Mihraplı, ~1920s" class="img-responsive" src="./img/thumb/116-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-2724" 
+                        class="gallery-item" 
+                        data-src="./img/120-1.jpg" 
+                        data-sub-html="<h4>Niğde, Mihraplı, ~1920s</h4><p>(100x120)cm (3.3x3.9)ft <i>P120</i</p>">
+                            <img alt="Niğde, Mihraplı, ~1920s" class="img-responsive" src="./img/thumb/120-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3201" 
+                        class="gallery-item" 
+                        data-src="./img/126-1.jpg" 
+                        data-sub-html="<h4>Türkmen, Karpuzlu, ~1940s</h4><p>(150x240)cm (4.9x7.9)ft <i>P126</i</p>">
+                            <img alt="Türkmen, Karpuzlu, ~1940s" class="img-responsive" src="./img/thumb/126-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3038" 
+                        class="gallery-item" 
+                        data-src="./img/125-1.jpg" 
+                        data-sub-html="<h4>Afganistan, Toplu, ~1950s</h4><p>(150x215)cm (4.9x7.1)ft <i>P125</i</p>">
+                            <img alt="Afganistan, Toplu, ~1950s" class="img-responsive" src="./img/thumb/125-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3074" 
+                        class="gallery-item" 
+                        data-src="./img/127-1.jpg" 
+                        data-sub-html="<h4>İran, Tebriz, ~1950s</h4><p>(135x205)cm (4.4x6.7)ft <i>P127</i</p>">
+                            <img alt="İran, Tebriz, ~1950s" class="img-responsive" src="./img/thumb/127-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3724" 
+                        class="gallery-item" 
+                        data-src="./img/128-1.jpg" 
+                        data-sub-html="<h4>Isparta, Zeki Müren, ~1960s</h4><p>(115x215)cm (3.8x7.1)ft <i>P128</i</p>">
+                            <img alt="Isparta, Zeki Müren, ~1960s" class="img-responsive" src="./img/thumb/128-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3441" 
+                        class="gallery-item" 
+                        data-src="./img/129-1.jpg" 
+                        data-sub-html="<h4>Isparta, Anonim, ~1960s</h4><p>(150x250)cm (4.9x8.2)ft <i>P129</i</p>">
+                            <img alt="Isparta, Anonim, ~1960s" class="img-responsive" src="./img/thumb/129-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3317" 
+                        class="gallery-item" 
+                        data-src="./img/102-1.jpg" 
+                        data-sub-html="<h4>Niğde, Madalyon, ~1950s</h4><p>(125x200)cm (4.1x6.6)ft<i>P102</i></p>">
+                            <img alt="Niğde, Madalyon, ~1950s" class="img-responsive" src="./img/thumb/102-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3097" 
+                        class="gallery-item" 
+                        data-src="./img/118-1.jpg" 
+                        data-sub-html="<h4>Niğde Demirci, Madalyon, ~1960s</h4><p>(125x185)cm (3.9x6.1)ft <i>P118</i</p>">
+                            <img alt="Niğde Demirci, Madalyon, ~1960s" class="img-responsive" src="./img/thumb/118-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-2906" 
+                        class="gallery-item" 
+                        data-src="./img/133-1.jpg" 
+                        data-sub-html="<h4>Niğde, Bor, Madalyon, ~1950s</h4><p>(125x180)cm (4.1x5.9)ft <i>P133</i></p>">
+                            <img alt="Niğde, Bor, Madalyon, ~1950s" class="img-responsive" src="./img/thumb/133-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3159" 
+                        class="gallery-item" 
+                        data-src="./img/130-1.jpg" 
+                        data-sub-html="<h4>Niğde, Demirci, Madalyon, ~1950s</h4><p>(125x205)cm (4.1x6.7)ft <i>P130</i</p>">
+                            <img alt="Niğde, Demirci, Madalyon, ~1950s" class="img-responsive" src="./img/thumb/130-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-4006" 
+                        class="gallery-item" 
+                        data-src="./img/109-1.jpg" 
+                        data-sub-html="<h4>Aksaray, Taşpınar, ~1940s</h4><p>(100x200)cm (3.3x6.6)ft<i>P109</i></p>">
+                            <img alt="Aksaray, Taşpınar, ~1940s" class="img-responsive" src="./img/thumb/109-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3649" 
+                        class="gallery-item" 
+                        data-src="./img/121-1.jpg" 
+                        data-sub-html="<h4>Konya, Taşpınar, Madalyon, ~1960s</h4><p>(105x190)cm (3.4x6.2)ft <i>P121</i</p>">
+                            <img alt="Konya, Taşpınar, Madalyon, ~1960s" class="img-responsive" src="./img/thumb/121-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3508" 
+                        class="gallery-item" 
+                        data-src="./img/122-1.jpg" 
+                        data-sub-html="<h4>Konya, Taşpınar, Sinekli, ~1950s</h4><p>(135x230)cm (4.4x7.5)ft <i>P122</i</p>">
+                            <img alt="Konya, Taşpınar, Sinekli, ~1950s" class="img-responsive" src="./img/thumb/122-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3166" 
+                        class="gallery-item" 
+                        data-src="./img/131-1.jpg" 
+                        data-sub-html="<h4>Konya, Taşpınar, Madalyon, Sinekli, ~1970s</h4><p>(130x200)cm (4.3x6.6)ft <i>P131</i</p>">
+                            <img alt="Konya, Taşpınar, Madalyon, Sinekli, ~1970s" class="img-responsive" src="./img/thumb/131-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3390" 
+                        class="gallery-item" 
+                        data-src="./img/132-1.jpg" 
+                        data-sub-html="<h4>Konya, Taşpınar, Madalyon, Sinekli, ~1960s</h4><p>(130x210)cm (4.3x6.9)ft <i>P132</i</p>">
+                            <img alt="Konya, Taşpınar, Madalyon, Sinekli, ~1960s" class="img-responsive" src="./img/thumb/132-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3787" 
+                        class="gallery-item" 
+                        data-src="./img/135-1.jpg" 
+                        data-sub-html="<h4>Konya, Taşpınar, ~1960s</h4><p>(135x250)cm (4.4x8.2)ft <i>P135</i></p>">
+                            <img alt="Konya, Taşpınar, ~1960s" class="img-responsive" src="./img/thumb/135-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-4301" 
+                        class="gallery-item" 
+                        data-src="./img/136-1.jpg" 
+                        data-sub-html="<h4>Kayseri, Yahyalı, Zincirli, ~1980s</h4><p>(130x280)cm (4.3x9.2)ft <i>P136</i></p>">
+                            <img alt="Kayseri, Yahyalı, Zincirli, ~1980s" class="img-responsive" src="./img/thumb/136-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3366" 
+                        class="gallery-item" 
+                        data-src="./img/162-1.jpg" 
+                        data-sub-html="<h4>Hereke, Yedi Dağın Çiçeği, ~1990s</h4><p>(250x400)cm (8.2x13.1)ft <i>P162</i</p>">
+                            <img alt="Hereke, Yedi Dağın Çiçeği, ~1990s" class="img-responsive" src="./img/thumb/162-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3113" 
+                        class="gallery-item" 
+                        data-src="./img/182-1.jpg" 
+                        data-sub-html="<h4>Isparta, Madalyon, ~1960s</h4><p>(200x300)cm (6.6x9.8)ft <i>P182</i</p>">
+                            <img alt="Isparta, Madalyon, ~1960s" class="img-responsive" src="./img/thumb/182-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3326" 
+                        class="gallery-item" 
+                        data-src="./img/183-1.jpg" 
+                        data-sub-html="<h4>Isparta, Madalyon, ~1950s</h4><p>(200x300)cm (6.6x9.8)ft <i>P183</i</p>">
+                            <img alt="Isparta, Madalyon, ~1950s" class="img-responsive" src="./img/thumb/183-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-2989" 
+                        class="gallery-item" 
+                        data-src="./img/155-1.jpg" 
+                        data-sub-html="<h4>Konya, Ladik, Madalyon, ~1970s</h4><p>(260x365)cm (8.5x12)ft <i>P155</i></p>">
+                            <img alt="Konya, Ladik, Madalyon, ~1970s" class="img-responsive" src="./img/thumb/155-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-2898" 
+                        class="gallery-item" 
+                        data-src="./img/159-1.jpg" 
+                        data-sub-html="<h4>Isparta, Serpme Çiçek, ~1930s</h4><p>(240x330)cm (7.9x10.8)ft <i>P159</i></p>">
+                            <img alt="Isparta, Serpme Çiçek, ~1930s" class="img-responsive" src="./img/thumb/159-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-2823" 
+                        class="gallery-item" 
+                        data-src="./img/163-1.jpg" 
+                        data-sub-html="<h4>Kars, Şahsecen, Göbekli, ~1960s</h4><p>(250x360)cm (8.2x11.8)ft <i>P163</i></p>">
+                            <img alt="Kars, Şahsecen, Göbekli, ~1960s" class="img-responsive" src="./img/thumb/163-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3191" 
+                        class="gallery-item" 
+                        data-src="./img/167-1.jpg" 
+                        data-sub-html="<h4>Malatya, Toplu, ~1970s</h4><p>(215x330)cm (7.1x10.8)ft <i>P167</i></p>">
+                            <img alt="Malatya, Toplu, ~1970s" class="img-responsive" src="./img/thumb/167-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3339" 
+                        class="gallery-item" 
+                        data-src="./img/157-1.jpg" 
+                        data-sub-html="<h4>Kayseri, Bünyan, Sonsuzluk ~1970s</h4><p>(160x260)cm (5.2x8.5)ft <i>P157</i</p>">
+                            <img alt="Kayseri, Bünyan, Sonsuzluk ~1970s" class="img-responsive" src="./img/thumb/157-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3126" 
+                        class="gallery-item" 
+                        data-src="./img/170-1.jpg" 
+                        data-sub-html="<h4>Kayseri, Bünyan, Binbir Gece ~1960s</h4><p>(200x300)cm (6.6x9.8)ft <i>P170</i</p>">
+                            <img alt="Kayseri, Bünyan, Binbir Gece ~1960s" class="img-responsive" src="./img/thumb/170-1.jpg" />
+                    </a>
+
+                    <a 
+                        data-lg-size="2000-3251" 
+                        class="gallery-item" 
+                        data-src="./img/166-1.jpg" 
+                        data-sub-html="<h4>Kayseri, Bünyan, Serpme Çiçek ~1960s</h4><p>(200x300)cm (6.6x9.8)ft <i>P166</i</p>">
+                            <img alt="Kayseri, Bünyan, Serpme Çiçek ~1960s" class="img-responsive" src="./img/thumb/166-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-5113" 
+                        class="gallery-item" 
+                        data-src="./img/176-1.jpg" 
+                        data-sub-html="<h4>Sivas, Şirvan, Bordörlü, Sandıklı, ~1920s</h4><p>(130x310)cm (4.3x10.2)ft <i>P176</i</p>">
+                            <img alt="Sivas, Şirvan, Bordörlü, Sandıklı, ~1920s" class="img-responsive" src="./img/thumb/176-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3342" 
+                        class="gallery-item" 
+                        data-src="./img/178-1.jpg" 
+                        data-sub-html="<h4>Sivas, Serpme Çiçek, ~1940s</h4><p>(120x195)cm (3.9x6.4)ft <i>P178</i</p>">
+                            <img alt="Sivas, Serpme Çiçek, ~1940s" class="img-responsive" src="./img/thumb/178-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3213" 
+                        class="gallery-item" 
+                        data-src="./img/179-1.jpg" 
+                        data-sub-html="<h4>Sivas, Cezaevi, Civir Göbek ~1960s</h4><p>(150x235)cm (4.9x7.7)ft <i>P179</i</p>">
+                            <img alt="Sivas, Cezaevi, Civir Göbek ~1960s" class="img-responsive" src="./img/thumb/179-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3689" 
+                        class="gallery-item" 
+                        data-src="./img/144-1.jpg" 
+                        data-sub-html="<h4>Sivas, ~1950s</h4><p>(210x390)cm (6.9x12.8)ft <i>P144</i></p>">
+                            <img alt="Sivas, ~1950s" class="img-responsive" src="./img/thumb/144-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-4789" 
+                        class="gallery-item" 
+                        data-src="./img/145-1.jpg" 
+                        data-sub-html="<h4>Kayseri, Eli Belinde, ~1920s</h4><p>(155x375)cm (5.1x12.3)ft <i>P145</i></p>">
+                            <img alt="Kayseri, Eli Belinde, ~1920s" class="img-responsive" src="./img/thumb/145-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3929" 
+                        class="gallery-item" 
+                        data-src="./img/146-1.jpg" 
+                        data-sub-html="<h4>Denizli, Eli Belinde, ~1980s</h4><p>(160x315)cm (5.2x10.3)ft <i>P146</i></p>">
+                            <img alt="Denizli, Eli Belinde, ~1980s" class="img-responsive" src="./img/thumb/146-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-4491" 
+                        class="gallery-item" 
+                        data-src="./img/148-1.jpg" 
+                        data-sub-html="<h4>Denizli, Eli Belinde, ~1960s</h4><p>(150x350)cm (4.9x11.5)ft <i>P148</i></p>">
+                            <img alt="Denizli, Eli Belinde, ~1960s" class="img-responsive" src="./img/thumb/148-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3440" 
+                        class="gallery-item" 
+                        data-src="./img/158-1.jpg" 
+                        data-sub-html="<h4>Sivas, Tırnaklı, ~1970s</h4><p>(225x375)cm (7.4x12.3)ft <i>P158</i></p>">
+                            <img alt="Sivas, Tırnaklı, ~1970s" class="img-responsive" src="./img/thumb/158-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3343" 
+                        class="gallery-item" 
+                        data-src="./img/180-1.jpg" 
+                        data-sub-html="<h4>Sivas, Eli Belinde, ~1930s</h4><p>(180x300)cm (5.9x9.8)ft <i>P180</i</p>">
+                            <img alt="Sivas, Eli Belinde, ~1930s" class="img-responsive" src="./img/thumb/180-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-5141" 
+                        class="gallery-item" 
+                        data-src="./img/181-1.jpg" 
+                        data-sub-html="<h4>Sivas, Sinekli, ~1950s</h4><p>(150x325)cm (4.9x10.7)ft <i>P181</i</p>">
+                            <img alt="Sivas, Sinekli, ~1950s" class="img-responsive" src="./img/thumb/181-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-8253" 
+                        class="gallery-item" 
+                        data-src="./img/117-1.jpg" 
+                        data-sub-html="<h4>Sivas, Selçuklu, ~1920s</h4><p>(90x370)cm (3x12.1)ft <i>P117</i</p>">
+                            <img alt="Sivas, Selçuklu, ~1920s" class="img-responsive" src="./img/thumb/117-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-2616" 
+                        class="gallery-item" 
+                        data-src="./img/107-1.jpg" 
+                        data-sub-html="<h4>Sivas, Eli Belinde, ~1950s</h4><p>(115x150)cm (3.8x4.9)ft<i>P107</i></p>">
+                            <img alt="layers of blue." class="img-responsive" src="./img/thumb/107-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3193" 
+                        class="gallery-item" 
+                        data-src="./img/123-1.jpg" 
+                        data-sub-html="<h4>Konya, Cicim, Eli Belinde, ~1970s</h4><p>(165x265)cm (5.4x8.7)ft <i>P123</i</p>">
+                            <img alt="Konya, Cicim, Eli Belinde, ~1970s" class="img-responsive" src="./img/thumb/123-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3317" 
+                        class="gallery-item" 
+                        data-src="./img/104-1.jpg" 
+                        data-sub-html="<h4>İran, Cicim, Eli Belinde, ~1970s</h4><p>(100x180)cm (3.3x5.9)ft<i>P104</i></p>">
+                            <img alt="İran, Cicim, Eli Belinde, ~1970s" class="img-responsive" src="./img/thumb/104-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-2892" 
+                        class="gallery-item" 
+                        data-src="./img/184-1.jpg" 
+                        data-sub-html="<h4>Denizli, ~1970s</h4><p>(230x320)cm (7.5x10.5)ft <i>P184</i</p>">
+                            <img alt="Denizli, ~1970s" class="img-responsive" src="./img/thumb/184-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-2900" 
+                        class="gallery-item" 
+                        data-src="./img/185-1.jpg" 
+                        data-sub-html="<h4>Denizli, ~1970s</h4><p>(200x280)cm (6.6x9.2)ft <i>P185</i</p>">
+                            <img alt="Denizli, ~1970s" class="img-responsive" src="./img/thumb/185-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-2992" 
+                        class="gallery-item" 
+                        data-src="./img/186-1.jpg" 
+                        data-sub-html="<h4>Sivas, Tırnaklı, ~1960s</h4><p>(100x155)cm (3.x5.1)ft <i>P186</i</p>">
+                            <img alt="Sivas, Tırnaklı, ~1960s" class="img-responsive" src="./img/thumb/186-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3031" 
+                        class="gallery-item" 
+                        data-src="./img/187-1.jpg" 
+                        data-sub-html="<h4>Uşak, ~1950s</h4><p>(90x120)cm (3x3.9)ft <i>P187</i</p>">
+                            <img alt="Uşak, ~1950s" class="img-responsive" src="./img/thumb/187-1.jpg" />
+                    </a>
+                    <a 
+                        data-lg-size="2000-3579" 
+                        class="gallery-item" 
+                        data-src="./img/111-1.jpg" 
+                        data-sub-html="<h4>Balıkesir, Toplu ~1970s</h4><p>(115x205)cm (3.8x6.7)ft<i>P111</i></p>">
+                            <img alt="Balıkesir, Toplu ~1970s" class="img-responsive" src="./img/thumb/111-1.jpg" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/lightgallery.min.js" 
+    integrity="sha512-dSI4QnNeaXiNEjX2N8bkb16B7aMu/8SI5/rE6NIa3Hr/HnWUO+EAZpizN2JQJrXuvU7z0HTgpBVk/sfGd0oW+w==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"></script>
+<script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/plugins/zoom/lg-zoom.min.js" 
+    integrity="sha512-BfC/MaayF9sOZyn1bs1R1P8dEugU7v0j5Qu2FeWVfF/rhKUKZBD9kgNqRNinefIp9zAE7g2KhlwwhMpl5V1jMA==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"></script>
+<script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/plugins/thumbnail/lg-thumbnail.min.js" 
+    integrity="sha512-Jx+orEb1KJtJ6Ajfshhr7is0zqgUC7H9ylk76KMtB9Ea2WAf/Muyzpe9zvBAYQQQKdAbj+rNYEorsRQLsmRafA==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"></script>
+<script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/plugins/fullscreen/lg-fullscreen.min.js" 
+    integrity="sha512-wUl8rYJugCiHiMm1uyGDqcgkvwoY9paD9vLJzT3e4mwp46yB0cicFVcvzy8N6UpbtQyFlJDBzrQQ3BNL72w1+A==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"></script>
+<script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" 
+    integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"></script>
+<script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" 
+    integrity="sha512-8dQZtymfQeDiZ4bBCFhrKZhDcZir15MqnEDBRiR6ReIVHLcdnCyJrhPIS0QifLGuMkFZsw9QMNeD9JtiLwieTQ==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"></script>
+
+<script>
+    $("#animated-thumbnails-gallery")
+    .justifiedGallery({
+        captions: false,
+        lastRow: "center",
+        rowHeight: 180,
+        margins: 10
+    })
+    .on("jg.complete", function () {
+        lightGallery(document.getElementById("animated-thumbnails-gallery"), {
+        pager: false,
+        flipHorizontal: false,
+        flipVertical: false,
+        rotateLeft: false,
+        plugins: [
+            lgZoom,
+            lgThumbnail,
+            lgFullscreen
+        ],
+        mobileSettings: {
+            controls: false,
+            showCloseIcon: false,
+            download: false,
+            rotate: false
+        }
+        });
+    });
+</script>
+</html>
