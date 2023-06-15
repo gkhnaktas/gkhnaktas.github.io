@@ -1,7 +1,8 @@
 
 
 Gökhan Aktaş
-gkhnaktas@gmail.com | +90 (544) 662 9416 | www.linkedin.com/in/gkhnaktas/
+
+gkhnaktas@gmail.com | +90 (544) 662 9416 | [linkedin.com/in/gkhnaktas/](https://www.linkedin.com/in/gkhnaktas/)
 
 ---
 
