@@ -43,19 +43,6 @@
         localStorage.setItem('page', escape(document.getElementById('save').innerHTML));
     }
 
-    function getSavedPage() {
-        var pageStr = localStorage.getItem('page');
-        if (!(pageStr && pageStr.length)) return null;
-        return unescape(pageStr);
-    }
-
-    function restoreSavedPage() {
-        var savedPage = getSavedPage();
-        if (savedPage) {
-            document.getElementById('save').innerHTML = savedPage;
-        }
-    }
-
     function getDownloadLink(data, type) {
         var URL = (window.URL || window.webkitURL);
         var Blob = (window.Blob || window.MozBlob || window.WebKitBlob);
@@ -257,7 +244,6 @@
     }
 
     if (hasLocalStorage) {
-        restoreSavedPage();
         addDocumentControls();
         bindDocumentControls();
         updateMetadata();
