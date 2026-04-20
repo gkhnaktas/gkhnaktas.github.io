@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>G/L Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0d0d0d;
+  --bg2: #141414;
+  --bg3: #1a1a1a;
+  --border: #2a2a2a;
+  --border2: #333;
+  --text: #e8e6e0;
+  --text2: #888;
+  --text3: #555;
+  --accent: #c8b89a;
+  --accent2: #8a7a68;
+  --green: #4a9e6b;
+  --red: #c05050;
+  --mono: 'DM Mono', monospace;
+  --sans: 'DM Sans', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#login-screen {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.login-card { width: 100%; max-width: 320px; }
+
+.login-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 40px;
+}
+
+.login-title span { color: var(--accent); }
+
+.btn-google {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 13px 20px;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.btn-google:hover { border-color: var(--accent2); background: var(--bg3); }
+
+.google-icon { width: 16px; height: 16px; flex-shrink: 0; }
+
+.login-error {
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--red);
+  min-height: 16px;
+  text-align: center;
+}
+
+.login-note {
+  margin-top: 20px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  text-align: center;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+
+#app-screen { display: none; min-height: 100dvh; }
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 10;
+}
+
+.topbar-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.topbar-right { display: flex; align-items: center; gap: 8px; }
+.topbar-user { font-family: var(--mono); font-size: 10px; color: var(--text3); }
+
+.btn-logout {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text3);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.btn-logout:hover { color: var(--text2); border-color: var(--border2); }
+
+.filters {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-group { display: flex; align-items: center; gap: 6px; }
+
+.filter-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+.filter-input {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 3px;
+  outline: none;
+  transition: border-color 0.15s;
+  -webkit-appearance: none;
+  color-scheme: dark;
+}
+
+.filter-input:focus { border-color: var(--accent2); }
+
+.btn-fetch {
+  padding: 7px 14px;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.btn-fetch:hover { background: var(--border); }
+.btn-fetch:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-item { background: var(--bg); padding: 10px 14px; text-align: center; }
+
+.summary-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 3px;
+}
+
+.summary-val { font-family: var(--mono); font-size: 13px; font-weight: 500; }
+
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 12px; }
+
+thead th {
+  background: var(--bg2);
+  padding: 9px 12px;
+  text-align: left;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+  font-weight: 400;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+
+thead th:hover { color: var(--text2); }
+thead th.sort-asc::after { content: ' ↑'; color: var(--accent); }
+thead th.sort-desc::after { content: ' ↓'; color: var(--accent); }
+
+tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
+tbody tr:hover { background: var(--bg2); }
+tbody td { padding: 9px 12px; white-space: nowrap; color: var(--text2); }
+tbody td.date-col { color: var(--text3); font-size: 11px; }
+tbody td.code-col { color: var(--accent); font-weight: 500; }
+
+.pos { color: var(--green); }
+.neg { color: var(--red); }
+.zero { color: var(--text3); }
+
+.state-msg {
+  padding: 48px 24px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--text3);
+}
+
+.spinner {
+  display: inline-block;
+  width: 14px; height: 14px;
+  border: 1.5px solid var(--border2);
+  border-top-color: var(--accent2);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-top: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+}
+
+.page-btns { display: flex; gap: 4px; }
+
+.page-btn {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.page-btn:hover { background: var(--bg3); }
+.page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+@media (max-width: 480px) {
+  thead th { padding: 8px; font-size: 8px; }
+  tbody td { padding: 8px; font-size: 11px; }
+  .summary-val { font-size: 11px; }
+  .topbar-user { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-title">G/L <span>Dashboard</span></div>
+    <button class="btn-google" onclick="startGoogleAuth()">
+      <svg class="google-icon" viewBox="0 0 24 24">
+        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+      </svg>
+      Google ile Giriş
+    </button>
+    <div class="login-error" id="login-error"></div>
+    <div class="login-note">Sadece yetkili Google hesabı<br>giriş yapabilir.</div>
+  </div>
+</div>
+
+<div id="app-screen">
+  <div class="topbar">
+    <div class="topbar-title">G/L Dashboard</div>
+    <div class="topbar-right">
+      <span class="topbar-user" id="topbar-user"></span>
+      <button class="btn-logout" onclick="doLogout()">Çıkış</button>
+    </div>
+  </div>
+
+  <div class="filters">
+    <div class="filter-group">
+      <span class="filter-label">Başlangıç</span>
+      <input type="date" class="filter-input" id="date-from">
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Bitiş</span>
+      <input type="date" class="filter-input" id="date-to">
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Kod</span>
+      <input type="text" class="filter-input" id="filter-code" placeholder="tümü" style="width:72px">
+    </div>
+    <button class="btn-fetch" id="btn-fetch" onclick="fetchData()">Getir</button>
+  </div>
+
+  <div class="summary" id="summary" style="display:none">
+    <div class="summary-item">
+      <div class="summary-label">TRY G/L</div>
+      <div class="summary-val" id="sum-try">—</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-label">USD G/L</div>
+      <div class="summary-val" id="sum-usd">—</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-label">EUR G/L</div>
+      <div class="summary-val" id="sum-eur">—</div>
+    </div>
+  </div>
+
+  <div id="table-container">
+    <div class="state-msg">Tarih aralığı seçip "Getir" butonuna bas.</div>
+  </div>
+
+  <div class="pagination" id="pagination" style="display:none">
+    <span id="page-info">—</span>
+    <div class="page-btns">
+      <button class="page-btn" id="btn-prev" onclick="changePage(-1)">← Önceki</button>
+      <button class="page-btn" id="btn-next" onclick="changePage(1)">Sonraki →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA_API = 'https://ep-small-sea-air9eaa4.apirest.c-4.us-east-1.aws.neon.tech/neondb/rest/v1';
+const AUTH_URL = 'https://ep-small-sea-air9eaa4.neonauth.c-4.us-east-1.aws.neon.tech/neondb/auth';
+
+const PAGE_SIZE = 50;
+let token = null;
+let allRows = [];
+let sortCol = 'date';
+let sortDir = 'desc';
+let currentPage = 0;
+
+// ── OAUTH ──────────────────────────────────────────────
+function startGoogleAuth() {
+  const redirect = encodeURIComponent(window.location.href.split('?')[0].split('#')[0]);
+  window.location.href = `${AUTH_URL}/oauth/google?redirect_uri=${redirect}`;
+}
+
+async function handleOAuthCallback() {
+  const params = new URLSearchParams(window.location.search);
+  const hash   = new URLSearchParams(window.location.hash.slice(1));
+
+  // Token URL'de mi?
+  token = params.get('access_token') || params.get('token') ||
+          params.get('session_token') || hash.get('access_token') || null;
+
+  if (token) {
+    window.history.replaceState({}, '', window.location.pathname);
+    await showApp();
+    return;
+  }
+
+  // Authorization code flow
+  const code = params.get('code');
+  if (code) {
+    window.history.replaceState({}, '', window.location.pathname);
+    try {
+      const res = await fetch(`${AUTH_URL}/oauth/callback/google?code=${encodeURIComponent(code)}`, {
+        credentials: 'include'
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || data.error || 'OAuth hatası');
+      token = data.access_token || data.data?.session?.access_token || data.token;
+      if (!token) throw new Error('Token alınamadı.');
+      await showApp();
+    } catch(e) {
+      document.getElementById('login-error').textContent = e.message;
+    }
+    return;
+  }
+
+  // Mevcut session var mı?
+  try {
+    const res = await fetch(`${AUTH_URL}/session`, { credentials: 'include' });
+    if (res.ok) {
+      const data = await res.json();
+      token = data.access_token || data.data?.session?.access_token || data.token;
+      if (token) { await showApp(); return; }
+    }
+  } catch(_) {}
+
+  // Login ekranı göster
+  document.getElementById('login-screen').style.display = 'flex';
+}
+
+function doLogout() {
+  token = null; allRows = [];
+  fetch(`${AUTH_URL}/sign-out`, { method: 'POST', credentials: 'include' }).catch(() => {});
+  document.getElementById('app-screen').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  resetTable();
+}
+
+async function showApp() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app-screen').style.display = 'block';
+
+  try {
+    const res = await fetch(`${AUTH_URL}/user`, {
+      headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+      credentials: 'include'
+    });
+    if (res.ok) {
+      const u = await res.json();
+      const email = u.email || u.data?.email || u.user?.email || '';
+      if (email) document.getElementById('topbar-user').textContent = email;
+    }
+  } catch(_) {}
+
+  const today = new Date();
+  const from  = new Date(); from.setDate(today.getDate() - 30);
+  document.getElementById('date-to').value   = fmtDate(today);
+  document.getElementById('date-from').value = fmtDate(from);
+
+  fetchData();
+}
+
+function fmtDate(d) { return d.toISOString().slice(0, 10); }
+
+// ── DATA ───────────────────────────────────────────────
+async function fetchData() {
+  if (!token) return;
+  document.getElementById('btn-fetch').disabled = true;
+
+  const from = document.getElementById('date-from').value;
+  const to   = document.getElementById('date-to').value;
+  const code = document.getElementById('filter-code').value.trim().toUpperCase();
+
+  document.getElementById('table-container').innerHTML =
+    '<div class="state-msg"><span class="spinner"></span>Yükleniyor…</div>';
+  document.getElementById('summary').style.display = 'none';
+  document.getElementById('pagination').style.display = 'none';
+
+  try {
+    let params = `select=date,code,gl_try,gl_usd,gl_eur&order=date.desc,code.asc&limit=5000`;
+    if (from) params += `&date=gte.${from}`;
+    if (to)   params += `&date=lte.${to}`;
+    if (code) params += `&code=eq.${code}`;
+
+    const res = await fetch(`${DATA_API}/daily_gl_by_code?${params}`, {
+      headers: { 'Authorization': `Bearer ${token}` },
+      credentials: 'include'
+    });
+
+    if (res.status === 401) { doLogout(); return; }
+    if (!res.ok) { const t = await res.text(); throw new Error(t || 'Veri alınamadı.'); }
+
+    allRows = await res.json();
+    currentPage = 0;
+    renderTable();
+    renderSummary();
+  } catch(e) {
+    document.getElementById('table-container').innerHTML =
+      `<div class="state-msg" style="color:var(--red)">${e.message}</div>`;
+  } finally {
+    document.getElementById('btn-fetch').disabled = false;
+  }
+}
+
+// ── TABLE ──────────────────────────────────────────────
+function sortRows(col) {
+  if (sortCol === col) {
+    sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+  } else {
+    sortCol = col;
+    sortDir = col === 'date' ? 'desc' : 'asc';
+  }
+  currentPage = 0;
+  renderTable();
+}
+
+function renderTable() {
+  if (!allRows.length) {
+    document.getElementById('table-container').innerHTML =
+      '<div class="state-msg">Kayıt bulunamadı.</div>';
+    document.getElementById('pagination').style.display = 'none';
+    return;
+  }
+
+  const sorted = [...allRows].sort((a, b) => {
+    let av = a[sortCol] ?? '', bv = b[sortCol] ?? '';
+    if (typeof av === 'number') return sortDir === 'asc' ? av - bv : bv - av;
+    return sortDir === 'asc'
+      ? String(av).localeCompare(String(bv))
+      : String(bv).localeCompare(String(av));
+  });
+
+  const total = sorted.length;
+  const pages = Math.ceil(total / PAGE_SIZE);
+  const slice = sorted.slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE);
+
+  const cols = [
+    { key: 'date',   label: 'Tarih' },
+    { key: 'code',   label: 'Kod' },
+    { key: 'gl_try', label: 'G/L TRY' },
+    { key: 'gl_usd', label: 'G/L USD' },
+    { key: 'gl_eur', label: 'G/L EUR' },
+  ];
+
+  const thHTML = cols.map(c => {
+    const cls = sortCol === c.key ? (sortDir === 'asc' ? 'sort-asc' : 'sort-desc') : '';
+    return `<th class="${cls}" onclick="sortRows('${c.key}')">${c.label}</th>`;
+  }).join('');
+
+  const tbHTML = slice.map(row => cols.map(c => {
+    const v = row[c.key];
+    if (c.key === 'date') return `<td class="date-col">${v ?? '—'}</td>`;
+    if (c.key === 'code') return `<td class="code-col">${v ?? '—'}</td>`;
+    const n = parseFloat(v);
+    if (isNaN(n)) return `<td class="zero">—</td>`;
+    const cls = n > 0 ? 'pos' : n < 0 ? 'neg' : 'zero';
+    return `<td class="${cls}">${n > 0 ? '+' : ''}${n.toLocaleString('tr-TR', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>`;
+  }).join('')).map(r => `<tr>${r}</tr>`).join('');
+
+  document.getElementById('table-container').innerHTML =
+    `<div class="table-wrap"><table>
+      <thead><tr>${thHTML}</tr></thead>
+      <tbody>${tbHTML}</tbody>
+    </table></div>`;
+
+  document.getElementById('page-info').textContent =
+    `${currentPage * PAGE_SIZE + 1}–${Math.min((currentPage + 1) * PAGE_SIZE, total)} / ${total}`;
+  document.getElementById('btn-prev').disabled = currentPage === 0;
+  document.getElementById('btn-next').disabled = currentPage >= pages - 1;
+  document.getElementById('pagination').style.display = 'flex';
+}
+
+function renderSummary() {
+  const sum = (key) => allRows.reduce((s, r) => s + (parseFloat(r[key]) || 0), 0);
+  const fmt = (n, sym) => {
+    const cls = n > 0 ? 'pos' : n < 0 ? 'neg' : 'zero';
+    return `<span class="${cls}">${n > 0 ? '+' : ''}${n.toLocaleString('tr-TR', {minimumFractionDigits:2, maximumFractionDigits:2})} ${sym}</span>`;
+  };
+  document.getElementById('sum-try').innerHTML = fmt(sum('gl_try'), '₺');
+  document.getElementById('sum-usd').innerHTML = fmt(sum('gl_usd'), '$');
+  document.getElementById('sum-eur').innerHTML = fmt(sum('gl_eur'), '€');
+  document.getElementById('summary').style.display = 'grid';
+}
+
+function changePage(dir) {
+  currentPage = Math.max(0, Math.min(Math.ceil(allRows.length / PAGE_SIZE) - 1, currentPage + dir));
+  renderTable();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function resetTable() {
+  document.getElementById('table-container').innerHTML =
+    '<div class="state-msg">Tarih aralığı seçip "Getir" butonuna bas.</div>';
+  document.getElementById('summary').style.display = 'none';
+  document.getElementById('pagination').style.display = 'none';
+}
+
+// ── INIT ───────────────────────────────────────────────
+document.getElementById('login-screen').style.display = 'none';
+handleOAuthCallback();
+</script>
+</body>
+</html>
