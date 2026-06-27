@@ -10,8 +10,9 @@ const fmt = (n) =>
 
 const fmtPct = (n) => (n >= 0 ? '+' : '') + (n * 100).toFixed(2) + '%'
 
-const monthLabel = (dateStr) => {
+const monthLabel = (dateStr, isCurrent = false) => {
   const d = new Date(dateStr)
+  if (!isCurrent) d.setMonth(d.getMonth() - 1)
   return d.toLocaleDateString('tr-TR', { month: 'short', year: '2-digit' })
 }
 
@@ -28,8 +29,8 @@ export default function Monthly() {
 
   if (loading) return <div className="loading">Yükleniyor...</div>
 
-  const chartData = data.map((r) => ({
-    label: monthLabel(r.date),
+  const chartData = data.map((r, i) => ({
+    label: monthLabel(r.date, i === data.length - 1),
     kazanç: r.gain > 0 ? r.gain : 0,
     kayıp: r.loss < 0 ? r.loss : 0,
     twror: r.twror * 100,
@@ -90,9 +91,9 @@ export default function Monthly() {
             </tr>
           </thead>
           <tbody>
-            {[...data].reverse().map((r) => (
+            {[...data].reverse().map((r, i) => (
               <tr key={r.date}>
-                <td>{monthLabel(r.date)}</td>
+                <td>{monthLabel(r.date, i === 0)}</td>
                 <td>{fmt(r.value_usd)}</td>
                 <td className="positive">{r.gain ? fmt(r.gain) : '-'}</td>
                 <td className="negative">{r.loss ? fmt(r.loss) : '-'}</td>
