@@ -5,7 +5,9 @@ export default function Callback() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
+    const hash = window.location.hash
+    const searchString = hash.includes('?') ? hash.split('?')[1] : ''
+    const params = new URLSearchParams(searchString)
     const token = params.get('token')
 
     if (token) {
