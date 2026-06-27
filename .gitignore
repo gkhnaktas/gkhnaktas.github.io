@@ -1,3 +1,6 @@
 
 carpets/.DS_Store
 .DS_Store
+_src/portfolio/node_modules/
+_src/portfolio/dist/
+_src/portfolio/.env
