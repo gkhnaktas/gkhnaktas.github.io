@@ -92,19 +92,21 @@ export default function Dashboard() {
           <table>
             <thead>
               <tr>
-                <th>Kategori</th>
+                <th>Kod</th>
                 <th>Değer</th>
                 <th>Pay</th>
                 <th>K/Z</th>
+                <th>MWROR (ay)</th>
               </tr>
             </thead>
             <tbody>
-              {categories.map((c) => (
-                <tr key={c.category}>
-                  <td>{c.category}</td>
-                  <td>{fmt(c.value_usd)}</td>
-                  <td>{(c.share * 100).toFixed(1)}%</td>
-                  <td className={c.gl_usd >= 0 ? 'positive' : 'negative'}>{fmt(c.gl_usd)}</td>
+              {holdings.map((h) => (
+                <tr key={h.code}>
+                  <td>{h.code}</td>
+                  <td>{fmt(h.value_usd)}</td>
+                  <td>{h.share != null ? (h.share * 100).toFixed(1) + '%' : '-'}</td>
+                  <td className={h.gl_usd >= 0 ? 'positive' : 'negative'}>{h.gl_usd != null ? fmt(h.gl_usd) : '-'}</td>
+                  <td className={h.mwror >= 0 ? 'positive' : 'negative'}>{h.mwror != null ? fmtPct(h.mwror) : '-'}</td>
                 </tr>
               ))}
             </tbody>
