@@ -22,10 +22,13 @@ export default function Dashboard() {
       api.getPortfolioGL(),
       api.getPortfolio(),
       api.getPortfolioByCategory(),
-    ]).then(([s, g, h, c]) => {
+      api.getPortfolioByCode(),
+    ]).then(([s, g, h, c, byCode]) => {
       setSummary(s)
       setGl(g)
-      setHoldings(h || [])
+      const byCodeMap = Object.fromEntries((byCode || []).map((r) => [r.code, r]))
+      const merged = (h || []).map((item) => ({ ...item, ...byCodeMap[item.code] }))
+      setHoldings(merged)
       setCategories(c || [])
       setLoading(false)
     })
