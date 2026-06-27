@@ -8,6 +8,14 @@ import { api } from '../api'
 const fmt = (n) =>
   new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n)
 
+const fmtCompact = (n) => {
+  const abs = Math.abs(n)
+  const str = abs >= 1000
+    ? `$${(abs / 1000).toFixed(1)}k`
+    : `$${abs.toFixed(0)}`
+  return n < 0 ? `-${str}` : str
+}
+
 const dayLabel = (dateStr) => {
   const d = new Date(dateStr)
   return d.toLocaleDateString('tr-TR', { day: '2-digit', month: 'short' })
@@ -29,8 +37,11 @@ export default function Daily() {
   const chartData = data.map((r) => ({
     label: dayLabel(r.date),
     gl: r.total_gl_usd,
-    date: r.date,
   }))
+
+  const codes = data.length > 0
+    ? Object.keys(data[0].by_code).sort()
+    : []
 
   const totalGl = data.reduce((s, r) => s + r.total_gl_usd, 0)
   const bestDay = data.reduce((best, r) => r.total_gl_usd > (best?.total_gl_usd ?? -Infinity) ? r : best, null)
@@ -57,7 +68,7 @@ export default function Daily() {
 
       <div className="section">
         <div className="section-title">Günlük Kazanç / Kayıp (USD)</div>
-        <ResponsiveContainer width="100%" height={320}>
+        <ResponsiveContainer width="100%" height={260}>
           <BarChart data={chartData} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
             <XAxis dataKey="label" tick={{ fill: '#94a3b8', fontSize: 11 }} />
             <YAxis tick={{ fill: '#94a3b8', fontSize: 11 }} tickFormatter={(v) => `$${(v / 1000).toFixed(1)}k`} />
@@ -76,23 +87,36 @@ export default function Daily() {
       </div>
 
       <div className="section">
-        <div className="section-title">Günlük Detay</div>
-        <table>
-          <thead>
-            <tr>
-              <th>Tarih</th>
-              <th>K/Z (USD)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[...data].reverse().map((r) => (
-              <tr key={r.date}>
-                <td>{dayLabel(r.date)}</td>
-                <td className={r.total_gl_usd >= 0 ? 'positive' : 'negative'}>{fmt(r.total_gl_usd)}</td>
+        <div className="section-title">Kod Bazında Günlük K/Z</div>
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ minWidth: `${(codes.length + 2) * 90}px` }}>
+            <thead>
+              <tr>
+                <th style={{ textAlign: 'left' }}>Tarih</th>
+                {codes.map((c) => <th key={c}>{c}</th>)}
+                <th>Toplam</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {[...data].reverse().map((r) => (
+                <tr key={r.date}>
+                  <td style={{ fontWeight: 500, whiteSpace: 'nowrap' }}>{dayLabel(r.date)}</td>
+                  {codes.map((c) => {
+                    const v = r.by_code[c] ?? 0
+                    return (
+                      <td key={c} className={v > 0 ? 'positive' : v < 0 ? 'negative' : ''}>
+                        {fmtCompact(v)}
+                      </td>
+                    )
+                  })}
+                  <td className={r.total_gl_usd >= 0 ? 'positive' : 'negative'} style={{ fontWeight: 600 }}>
+                    {fmtCompact(r.total_gl_usd)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   )
