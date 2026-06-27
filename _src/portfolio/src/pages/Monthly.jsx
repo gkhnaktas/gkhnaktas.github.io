@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {
-  ComposedChart, Bar, Line, XAxis, YAxis, Tooltip,
-  ResponsiveContainer, Cell, ReferenceLine, Legend
+  ComposedChart, AreaChart, Area, Bar, Line, XAxis, YAxis, Tooltip,
+  ResponsiveContainer, ReferenceLine, Legend
 } from 'recharts'
 import { api } from '../api'
 
@@ -15,6 +15,9 @@ const monthLabel = (dateStr, isCurrent = false) => {
   if (!isCurrent) d.setMonth(d.getMonth() - 1)
   return d.toLocaleDateString('tr-TR', { month: 'short', year: '2-digit' })
 }
+
+const tooltipStyle = { background: '#1a1d27', border: '1px solid #2e3248', borderRadius: 8 }
+const tickStyle = { fill: '#94a3b8', fontSize: 11 }
 
 export default function Monthly() {
   const [data, setData] = useState([])
@@ -34,7 +37,7 @@ export default function Monthly() {
     kazanç: r.gain > 0 ? r.gain : 0,
     kayıp: r.loss < 0 ? r.loss : 0,
     twror: r.twror * 100,
-    value_usd: r.value_usd,
+    değer: r.value_usd,
   }))
 
   const totalGain = data.reduce((s, r) => s + (r.gain || 0), 0)
@@ -60,21 +63,43 @@ export default function Monthly() {
 
       <div className="section">
         <div className="section-title">Aylık Kazanç / Kayıp (USD)</div>
-        <ResponsiveContainer width="100%" height={320}>
-          <ComposedChart data={chartData} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
-            <XAxis dataKey="label" tick={{ fill: '#94a3b8', fontSize: 11 }} />
-            <YAxis yAxisId="bar" tick={{ fill: '#94a3b8', fontSize: 11 }} tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`} />
-            <YAxis yAxisId="line" orientation="right" tick={{ fill: '#94a3b8', fontSize: 11 }} tickFormatter={(v) => v.toFixed(1) + '%'} />
+        <ResponsiveContainer width="100%" height={300}>
+          <ComposedChart data={chartData} margin={{ top: 8, right: 64, left: 0, bottom: 0 }}>
+            <XAxis dataKey="label" tick={tickStyle} />
+            <YAxis yAxisId="bar" tick={tickStyle} tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`} />
+            <YAxis yAxisId="line" orientation="right" tick={tickStyle} tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`} />
             <Tooltip
-              contentStyle={{ background: '#1a1d27', border: '1px solid #2e3248', borderRadius: 8 }}
-              formatter={(v, name) => name === 'twror' ? v.toFixed(2) + '%' : fmt(v)}
+              contentStyle={tooltipStyle}
+              formatter={(v, name) => [fmt(v), name]}
             />
             <ReferenceLine yAxisId="bar" y={0} stroke="#2e3248" />
             <Legend />
             <Bar yAxisId="bar" dataKey="kazanç" fill="#22c55e" radius={[3, 3, 0, 0]} />
             <Bar yAxisId="bar" dataKey="kayıp" fill="#ef4444" radius={[3, 3, 0, 0]} />
-            <Line yAxisId="line" type="monotone" dataKey="twror" stroke="#6366f1" dot={false} strokeWidth={2} name="TWROR %" />
+            <Line yAxisId="line" type="monotone" dataKey="değer" stroke="#6366f1" dot={false} strokeWidth={2} name="Değer (USD)" />
           </ComposedChart>
+        </ResponsiveContainer>
+      </div>
+
+      <div className="section">
+        <div className="section-title">Aylık TWROR (%)</div>
+        <ResponsiveContainer width="100%" height={200}>
+          <AreaChart data={chartData} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
+            <defs>
+              <linearGradient id="twrorGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#6366f1" stopOpacity={0.3} />
+                <stop offset="95%" stopColor="#6366f1" stopOpacity={0} />
+              </linearGradient>
+            </defs>
+            <XAxis dataKey="label" tick={tickStyle} />
+            <YAxis tick={tickStyle} tickFormatter={(v) => v.toFixed(1) + '%'} />
+            <Tooltip
+              contentStyle={tooltipStyle}
+              formatter={(v) => [v.toFixed(2) + '%', 'TWROR']}
+            />
+            <ReferenceLine y={0} stroke="#2e3248" />
+            <Area type="monotone" dataKey="twror" stroke="#6366f1" fill="url(#twrorGrad)" strokeWidth={2} dot={false} name="TWROR %" />
+          </AreaChart>
         </ResponsiveContainer>
       </div>
 
