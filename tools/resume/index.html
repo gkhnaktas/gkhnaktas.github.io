@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gökhan Aktaş — Resume</title>
+  <meta name="description" content="Resume of Gökhan Aktaş, metallurgical engineer: planning, procurement, stock control and warehouse management; EAF, LF and SAF operations.">
+  <meta name="author" content="Gökhan Aktaş">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #0f1117;
+      --bg2:    #1a1d27;
+      --bg3:    #222536;
+      --border: #2e3248;
+      --text:   #e2e8f0;
+      --text2:  #94a3b8;
+      --accent: #6366f1;
+      --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+    /* Header bar — same as homepage */
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text2);
+      text-decoration: none;
+    }
+    .brand .tilde { color: var(--accent); }
+    .site-header nav { display: flex; gap: 20px; }
+    .site-header nav a,
+    .print-btn {
+      color: var(--text2);
+      text-decoration: none;
+      font-size: 13px;
+      background: none;
+      border: none;
+      font-family: inherit;
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.15s;
+    }
+    .site-header nav a:hover, .print-btn:hover { color: var(--text); }
+
+    main {
+      flex: 1;
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 64px 24px 72px;
+    }
+
+    /* Identity */
+    h1 {
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      line-height: 1.15;
+    }
+    .role {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      margin-top: 6px;
+    }
+    .meta {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      color: var(--text2);
+      font-size: 13.5px;
+    }
+    .meta a {
+      color: var(--text2);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .meta a:hover { color: var(--text); border-color: var(--accent); }
+
+    .summary {
+      margin-top: 26px;
+      color: var(--text2);
+      max-width: 60ch;
+    }
+
+    /* Sections */
+    section { margin-top: 52px; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--text2);
+      text-transform: lowercase;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 400;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Experience entries */
+    .entry { padding-left: 18px; border-left: 1px solid var(--border); position: relative; }
+    .entry + .entry { margin-top: 30px; }
+    .entry::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 7px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1.5px solid var(--accent);
+    }
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .entry-title { font-size: 15.5px; font-weight: 600; }
+    .entry-date {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text2);
+      white-space: nowrap;
+    }
+    .entry-org { color: var(--text2); font-size: 13.5px; margin-top: 1px; }
+    .entry ul {
+      margin-top: 8px;
+      list-style: none;
+      color: var(--text2);
+      font-size: 13.5px;
+    }
+    .entry ul li { padding-left: 14px; position: relative; }
+    .entry ul li + li { margin-top: 3px; }
+    .entry ul li::before {
+      content: '·';
+      position: absolute;
+      left: 2px;
+      color: var(--accent);
+    }
+
+    /* Skills as chips */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 13px;
+      font-size: 13px;
+      color: var(--text2);
+    }
+
+    /* Two-column small sections */
+    .duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .plain-list { list-style: none; color: var(--text2); font-size: 13.5px; }
+    .plain-list li + li { margin-top: 8px; }
+    .plain-list strong { color: var(--text); font-weight: 600; }
+    .plain-list small { display: block; color: var(--text2); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 24px;
+      text-align: center;
+      color: var(--text2);
+      font-size: 12px;
+    }
+    footer a { color: var(--text2); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 560px) {
+      main { padding: 44px 16px 56px; }
+      h1 { font-size: 27px; }
+      .duo { grid-template-columns: 1fr; gap: 32px; }
+      .entry-head { flex-direction: column; gap: 2px; }
+    }
+
+    /* Print: clean light document, no chrome */
+    @media print {
+      :root {
+        --bg: #ffffff;
+        --bg2: #ffffff;
+        --bg3: #ffffff;
+        --border: #d4d4d8;
+        --text: #18181b;
+        --text2: #52525b;
+        --accent: #4f46e5;
+      }
+      body { font-size: 12.5px; }
+      .site-header, footer { display: none; }
+      main { padding: 0; max-width: none; }
+      section { margin-top: 26px; }
+      .entry + .entry { margin-top: 16px; }
+      .chip { padding: 2px 10px; }
+      a { text-decoration: none; }
+      .entry, section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="/">gkhnaktas <span class="tilde">/ ~</span></a>
+    <nav>
+      <button class="print-btn" onclick="window.print()">print / pdf</button>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Gökhan Aktaş</h1>
+    <p class="role">metallurgical &amp; materials engineer</p>
+
+    <div class="meta">
+      <span>Tirana, Albania</span>
+      <a href="mailto:gkhnaktas@gmail.com">gkhnaktas@gmail.com</a>
+      <a href="https://www.linkedin.com/in/gkhnaktas/">linkedin.com/in/gkhnaktas</a>
+      <a href="https://github.com/gkhnaktas">github.com/gkhnaktas</a>
+    </div>
+
+    <p class="summary">Planning, procurement, stock control and warehouse management; production management, process control and improvement. Operational and engineering experience in steel melt shops and ferroalloy plants: electric arc furnace, ladle furnace and submerged arc furnace operations.</p>
+
+    <section>
+      <h2 class="section-label">experience</h2>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Planning, Stock Control &amp; Warehouse Director</span>
+          <span class="entry-date">Apr 2026 — Present</span>
+        </div>
+        <p class="entry-org">AlbChrome ShPK · Tirana, Albania</p>
+        <ul>
+          <li>Planning, stock control and warehouse management across three ferrochrome plants (submerged arc furnaces).</li>
+          <li>Procurement coordination and supplier evaluation.</li>
+          <li>ERP (Dynamics 365 Business Central) processes for procurement and budget control; reporting and data infrastructure.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Metallurgical Operations Manager</span>
+          <span class="entry-date">Feb 2024 — Apr 2026</span>
+        </div>
+        <p class="entry-org">AlbChrome ShPK · Tirana, Albania</p>
+        <ul>
+          <li>Metallurgical operations across three ferrochrome plants (submerged arc furnaces).</li>
+          <li>Process control and improvement; production and raw material coordination.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Production Manager</span>
+          <span class="entry-date">May 2019 — Jun 2022</span>
+        </div>
+        <p class="entry-org">Prométal Aciérie · Douala, Cameroon</p>
+        <ul>
+          <li>Production planning and stock management.</li>
+          <li>Process and team management; manufacturing operations.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Production Supervisor</span>
+          <span class="entry-date">Feb 2014 — Mar 2015</span>
+        </div>
+        <p class="entry-org">Hill Metals Est. · Jeddah, Saudi Arabia</p>
+        <ul>
+          <li>Process improvement; process and team management.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Production Supervisor</span>
+          <span class="entry-date">Feb 2013 — Nov 2013</span>
+        </div>
+        <p class="entry-org">Al Anmaa · Basra, Iraq</p>
+        <ul>
+          <li>Process improvement; process and team management.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Production Engineer</span>
+          <span class="entry-date">May 2012 — Dec 2012</span>
+        </div>
+        <p class="entry-org">Syrian Metal Industries · Adra, Syria</p>
+        <ul>
+          <li>Meltshop start-up and commissioning.</li>
+          <li>Production planning; process and team management.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Head of Production</span>
+          <span class="entry-date">Sep 2010 — Apr 2012</span>
+        </div>
+        <p class="entry-org">Çebitaş Demir Çelik End. A.Ş. · İzmir, Türkiye</p>
+        <ul>
+          <li>Process and team management.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Quality Control Engineer</span>
+          <span class="entry-date">Apr 2007 — Sep 2010</span>
+        </div>
+        <p class="entry-org">Çebitaş Demir Çelik End. A.Ş. · İzmir, Türkiye</p>
+        <ul>
+          <li>Quality control and quality assurance.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-label">skills</h2>
+      <div class="chips">
+        <span class="chip">Planning &amp; Procurement</span>
+        <span class="chip">Stock &amp; Warehouse Management</span>
+        <span class="chip">Production Management</span>
+        <span class="chip">Team Management</span>
+        <span class="chip">Process Control &amp; Improvement</span>
+        <span class="chip">ERP — Dynamics 365 Business Central</span>
+        <span class="chip">Data &amp; Reporting — Power Query, DAX, SQL</span>
+      </div>
+    </section>
+
+    <div class="duo">
+      <section>
+        <h2 class="section-label">education</h2>
+        <ul class="plain-list">
+          <li>
+            <strong>Metallurgical and Materials Engineering</strong>
+            <small>Dokuz Eylül University · 2000 — 2005</small>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="section-label">languages</h2>
+        <ul class="plain-list">
+          <li><strong>Turkish</strong> <small>Native</small></li>
+          <li><strong>English</strong> <small>Full Professional Proficiency</small></li>
+        </ul>
+      </section>
+    </div>
+
+    <section>
+      <h2 class="section-label">certifications</h2>
+      <ul class="plain-list">
+        <li><strong>ISO 9001 · ISO 14001 · OHSAS 18001</strong> <small>Integrated Management System — SGS, 2012</small></li>
+        <li><strong>Radiation Safety</strong> <small>Turkish Atomic Energy Authority, 2011</small></li>
+        <li><strong>Foreign Trade Specialist</strong> <small>YorkTrade Foreign Trade Institute, 2011</small></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://gaktas.com/">gaktas.com</a>
+  </footer>
+
+</body>
+</html>
