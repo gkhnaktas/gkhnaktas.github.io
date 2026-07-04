@@ -1,1 +1,359 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Gökhan Aktaş</title><meta name="description" content="Hi, I'm Gökhan Aktaş. I'm a metallurgical engineer. I make things happen in steel industry."><meta name="author" content="SitePoint"><meta property="og:title" content="Gökhan Aktaş"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gaktas.com/"><meta property="og:description" content="Hi, I'm Gökhan Aktaş. I'm a metallurgical engineer. I make things happen in steel industry."><meta property="og:image" content="https://www.gaktas.com/og.png"><link rel="icon" href="./favicon.ico"><link rel="icon" href="./favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./apple-touch-icon.png"><style>body{font-family: "Papyrus"; max-width: 600px; margin: auto; padding-top: 2.5em; padding-left: 1.5em; padding-right: 1.5em; background-color: #fdfdfd;}h1, h2{margin-bottom: 1,5em;}input, textarea{width: 100%; line-height: 2em; font-size: 0.9rem;margin-bottom: 1.5em;text-indent: 5px;padding: 0;}form{margin-top: 3em;padding-right: 4px;}textarea{line-height: 1.3em;}input[type=submit]{width: 90px;font-size: 1rem;padding: 7px;}</style></head><body><h1>Hi,</h1><h1>I'm Gökhan Aktaş.</h1><h1>I'm a metallurgical engineer.</h1><h2>I make things happen in steel industry.</h2><h2>In case of necessity,</h2><h2>Contact me &darr;</h2><form id="form" autocomplete="off"><input type="text" id="from_name" name="from_name" required placeholder="Your name"> <input type="email" id="reply_to" name="reply_to" required placeholder="Your email"> <textarea id="message" name="message" rows="3" cols="20" required placeholder="Your message"></textarea> <input id="button" type="submit" value="Submit"></input> </form> <span id='status'></span></body><script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script><script>emailjs.init('user_WdJ7cfsLvmGbAe4nVkXhv')</script><script>document.getElementById('form').addEventListener('submit', function(event){event.preventDefault(); const btn=document.getElementById('button'); const form=document.getElementById("form"); const status=document.getElementById("status"); btn.value='Sending...'; btn.disabled=true; const serviceID='default_service'; const templateID='template_xi01arh'; emailjs.sendForm(serviceID, templateID, this).then(()=>{form.reset(); btn.style="display: none "; status.innerHTML="Success, thanks for contacting me!"; setTimeout(()=>{status.innerHTML=""; btn.style="display: inline"; btn.value='Submit'; btn.disabled=false;}, 5000);}, (err)=>{status.innerHTML="Oops! There was a problem.";});});</script></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gökhan Aktaş — Metallurgical Engineer | Steel Plant, Arc Furnace &amp; Ladle Furnace</title>
+  <meta name="description" content="Gökhan Aktaş is a metallurgical engineer with 15+ years in steel plants and ferroalloy production: electric arc furnace (EAF), ladle furnace (LF) and submerged arc furnace (SAF) operations, meltshop commissioning and production planning.">
+  <meta name="author" content="Gökhan Aktaş">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://gaktas.com/">
+  <meta property="og:title" content="Gökhan Aktaş — Metallurgical Engineer">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gaktas.com/">
+  <meta property="og:description" content="Metallurgical engineer: steel plant operations, electric arc furnace, ladle furnace, submerged arc furnace, commissioning and production planning.">
+  <meta property="og:image" content="https://gaktas.com/og.png">
+  <link rel="icon" href="./favicon.ico">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #0f1117;
+      --bg2:    #1a1d27;
+      --bg3:    #222536;
+      --border: #2e3248;
+      --text:   #e2e8f0;
+      --text2:  #94a3b8;
+      --accent: #6366f1;
+      --accent-dim: rgba(99, 102, 241, 0.15);
+      --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+    /* Header — same bar as /tools */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text2);
+      text-decoration: none;
+    }
+    .brand .tilde { color: var(--accent); }
+    nav { display: flex; gap: 20px; }
+    nav a {
+      color: var(--text2);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.15s;
+    }
+    nav a:hover { color: var(--text); }
+
+    /* Main */
+    main {
+      flex: 1;
+      max-width: 640px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 88px 24px 64px;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    h1 .caret {
+      display: inline-block;
+      width: 3px;
+      height: 0.9em;
+      margin-left: 6px;
+      background: var(--accent);
+      vertical-align: -0.08em;
+      animation: blink 1.1s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      .caret { animation: none; }
+    }
+
+    .intro {
+      color: var(--text2);
+      font-size: 16px;
+      max-width: 54ch;
+    }
+    .intro + .intro { margin-top: 12px; }
+    .intro a {
+      color: var(--text);
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-underline-offset: 3px;
+    }
+    .intro a:hover { color: var(--accent); }
+
+    /* Link cards */
+    .links {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .link-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .link-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .link-title {
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .link-title svg { color: var(--accent); flex-shrink: 0; }
+    .link-desc { color: var(--text2); font-size: 12.5px; }
+
+    /* Work */
+    .work { margin-top: 56px; }
+    .work .intro { margin-top: 0; }
+    h2.section-label { font-weight: 400; }
+
+    /* Contact */
+    .contact { margin-top: 72px; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--text2);
+      text-transform: lowercase;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    form { display: grid; gap: 14px; }
+    .field label {
+      display: block;
+      font-size: 12.5px;
+      color: var(--text2);
+      margin-bottom: 5px;
+    }
+    input[type="text"], input[type="email"], textarea {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font: inherit;
+      font-size: 14px;
+      padding: 9px 12px;
+      transition: border-color 0.15s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    textarea { resize: vertical; min-height: 96px; }
+
+    .form-footer { display: flex; align-items: center; gap: 14px; }
+    button[type="submit"] {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 9px 22px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    button[type="submit"]:hover { opacity: 0.88; }
+    button[type="submit"]:disabled { opacity: 0.5; cursor: default; }
+    #status { font-size: 13px; color: var(--text2); }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 24px;
+      text-align: center;
+      color: var(--text2);
+      font-size: 12px;
+    }
+    footer a { color: var(--text2); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 520px) {
+      main { padding: 56px 16px 48px; }
+      h1 { font-size: 30px; }
+      nav { gap: 14px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Gökhan Aktaş",
+    "url": "https://gaktas.com/",
+    "jobTitle": "Metallurgical Engineer",
+    "description": "Metallurgical engineer specialised in steel plant and ferroalloy operations: electric arc furnace, ladle furnace and submerged arc furnace processes, meltshop commissioning, production planning and stock management.",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Dokuz Eylül University"
+    },
+    "knowsAbout": [
+      "Metallurgy",
+      "Steel plant operations",
+      "Electric arc furnace (EAF)",
+      "Ladle furnace (LF)",
+      "Submerged arc furnace (SAF)",
+      "Meltshop commissioning",
+      "Ferroalloy production",
+      "Production planning",
+      "Stock and warehouse management"
+    ],
+    "sameAs": [
+      "https://github.com/gkhnaktas",
+      "https://www.linkedin.com/in/gkhnaktas/"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <header>
+    <a class="brand" href="/">gkhnaktas <span class="tilde">/ ~</span></a>
+    <nav>
+      <a href="https://github.com/gkhnaktas" rel="me">github</a>
+      <a href="https://www.linkedin.com/in/gkhnaktas/" rel="me">linkedin</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Hi, I'm Gökhan Aktaş.<span class="caret" aria-hidden="true"></span></h1>
+
+    <p class="intro">Engineer by training, planner by habit. I like understanding how things work, then building small tools that make them work a little better.</p>
+    <p class="intro">If you'd like to get in touch, drop me a note below.</p>
+
+    <section class="work">
+      <h2 class="section-label">what i do</h2>
+      <p class="intro">I'm a metallurgical engineer with 15+ years in steel plants and ferroalloy production across Türkiye, the Middle East, Africa and the Balkans. My background covers electric arc furnace (EAF) and ladle furnace (LF) operations, submerged arc furnace (SAF) processes, meltshop commissioning and start-up, production planning, and stock &amp; warehouse management.</p>
+    </section>
+
+    <div class="links">
+      <a class="link-card" href="https://github.com/gkhnaktas">
+        <span class="link-title">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </span>
+        <span class="link-desc">Code and experiments</span>
+      </a>
+      <a class="link-card" href="https://www.linkedin.com/in/gkhnaktas/">
+        <span class="link-title">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </span>
+        <span class="link-desc">The professional side</span>
+      </a>
+    </div>
+
+    <section class="contact">
+      <p class="section-label">contact</p>
+      <form id="form" autocomplete="off">
+        <input type="hidden" name="access_key" value="5a0a148f-4be9-486d-8ec4-ebed758878f3">
+        <input type="hidden" name="subject" value="New message from gaktas.com">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="field">
+          <label for="from_name">Your name</label>
+          <input type="text" id="from_name" name="name" required>
+        </div>
+        <div class="field">
+          <label for="reply_to">Your email</label>
+          <input type="email" id="reply_to" name="email" required>
+        </div>
+        <div class="field">
+          <label for="message">Your message</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <div class="form-footer">
+          <button id="button" type="submit">Send message</button>
+          <span id="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://www.gaktas.com/">gaktas.com</a>
+  </footer>
+
+  <script>
+    document.getElementById('form').addEventListener('submit', async function (event) {
+      event.preventDefault();
+      const btn = document.getElementById('button');
+      const form = document.getElementById('form');
+      const status = document.getElementById('status');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: new FormData(form)
+        });
+        const result = await response.json();
+        if (result.success) {
+          form.reset();
+          status.textContent = 'Sent. Thanks for reaching out!';
+          setTimeout(() => { status.textContent = ''; }, 5000);
+        } else {
+          status.textContent = "Couldn't send. Please try again.";
+        }
+      } catch (e) {
+        status.textContent = "Couldn't send. Please try again.";
+      }
+      btn.textContent = 'Send message';
+      btn.disabled = false;
+    });
+  </script>
+</body>
+</html>
