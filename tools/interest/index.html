@@ -1,200 +1,618 @@
-
-
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kredi & Faiz Hesaplama</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <title>Calculator — Gökhan Aktaş</title>
+  <meta name="description" content="Loan installment and deposit interest calculator with full amortization and compounding schedules.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #0f1117;
+      --bg2:    #1a1d27;
+      --bg3:    #222536;
+      --border: #2e3248;
+      --text:   #e2e8f0;
+      --text2:  #94a3b8;
+      --accent: #6366f1;
+      --accent-dim: rgba(99, 102, 241, 0.15);
+      --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+    /* Header — same as /tools */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .back-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text2);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: var(--text); }
+    .breadcrumb-sep { color: var(--border); font-size: 16px; }
+    .breadcrumb-current { color: var(--text); font-size: 13px; font-weight: 500; }
+
+    main {
+      flex: 1;
+      max-width: 860px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 40px 24px 64px;
+    }
+
+    .page-title {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 24px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: inline-flex;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 4px;
+      gap: 4px;
+      margin-bottom: 28px;
+    }
+    .tab {
+      border: none;
+      background: none;
+      color: var(--text2);
+      font: inherit;
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 7px 16px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: color 0.15s, background 0.15s;
+    }
+    .tab:hover { color: var(--text); }
+    .tab.active { background: var(--accent); color: #fff; }
+
+    /* Inputs */
+    .inputs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .field label {
+      display: block;
+      font-size: 12px;
+      color: var(--text2);
+      margin-bottom: 5px;
+    }
+    .field input {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 14px;
+      padding: 8px 11px;
+      transition: border-color 0.15s;
+    }
+    .field input:focus { outline: none; border-color: var(--accent); }
+    .field select {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 14px;
+      padding: 8px 11px;
+      transition: border-color 0.15s;
+    }
+    .field select:focus { outline: none; border-color: var(--accent); }
+
+    /* Summary cards */
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .stat {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .stat.primary { border-color: var(--accent); background: var(--accent-dim); }
+    .stat-label { color: var(--text2); font-size: 12px; }
+    .stat-value {
+      font-family: var(--mono);
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 2px;
+      word-break: break-all;
+    }
+
+    /* Table */
+    .table-wrap {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: auto;
+      max-height: 480px;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    thead th {
+      position: sticky;
+      top: 0;
+      background: var(--bg3);
+      color: var(--text2);
+      font-weight: 500;
+      text-align: right;
+      padding: 9px 14px;
+      white-space: nowrap;
+    }
+    thead th:first-child { text-align: left; }
+    tbody td {
+      padding: 7px 14px;
+      text-align: right;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      border-top: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    tbody td:first-child {
+      text-align: left;
+      color: var(--text2);
+      font-family: system-ui, sans-serif;
+    }
+    tbody tr:hover td { background: var(--bg2); }
+
+    .hidden { display: none; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 24px;
+      text-align: center;
+      color: var(--text2);
+      font-size: 12px;
+    }
+    footer a { color: var(--text2); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 520px) {
+      main { padding: 28px 16px 48px; }
+      .page-title { font-size: 21px; }
+      .tabs { width: 100%; }
+      .tab { flex: 1; }
+    }
+  </style>
 </head>
-
 <body>
-  <div class="container mt-4">
-    <section class="has-text-centered">
-      <h1 class="title">
-        Kredi & Faiz Hesaplama Aracı
-      </h1>
-      <!-- tabs -->
-      <div class="tabs is-centered">
-        <ul>
-          <li class="tab is-active" onclick="openTab(event,'bkh')"><a>Kredi Hesaplama</a></li>
-          <li class="tab" onclick="openTab(event,'mfh')"><a>Mevduat Faizi Hesaplama</a></li>
-        </ul>
+
+  <header>
+    <a class="back-link" href="/tools/">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      tools
+    </a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">interest</span>
+  </header>
+
+  <main>
+    <h1 class="page-title">Calculator</h1>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" id="tab-loan" role="tab" aria-selected="true" aria-controls="panel-loan">Loan</button>
+      <button class="tab" id="tab-deposit" role="tab" aria-selected="false" aria-controls="panel-deposit">Deposit</button>
+      <button class="tab" id="tab-fv" role="tab" aria-selected="false" aria-controls="panel-fv">Future Value</button>
+      <button class="tab" id="tab-nper" role="tab" aria-selected="false" aria-controls="panel-nper">Nper</button>
+    </div>
+
+    <!-- ============ LOAN ============ -->
+    <section id="panel-loan" role="tabpanel" aria-labelledby="tab-loan">
+      <div class="inputs">
+        <div class="field">
+          <label for="l-amount">Loan amount</label>
+          <input type="number" id="l-amount" min="0" step="10000" value="100000">
+        </div>
+        <div class="field">
+          <label for="l-rate">Monthly interest (%)</label>
+          <input type="number" id="l-rate" min="0" step="0.01" value="1.39">
+        </div>
+        <div class="field">
+          <label for="l-term">Term (months)</label>
+          <input type="number" id="l-term" min="1" max="360" step="1" value="12">
+        </div>
       </div>
-      <!-- and of tabs -->
+
+      <div class="summary">
+        <div class="stat primary">
+          <div class="stat-label">Monthly installment</div>
+          <div class="stat-value" id="l-installment">—</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Total payment</div>
+          <div class="stat-value" id="l-total">—</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Total interest</div>
+          <div class="stat-value" id="l-tinterest">—</div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Month</th><th>Installment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr>
+          </thead>
+          <tbody id="l-tbody"></tbody>
+        </table>
+      </div>
     </section>
-  </div>
-  <div class="container section">
-    <div id="bkh" class="content-tab" >
-      <!-- app1 -->
-      <div id="app1">
-        <div class="columns mb-0">
-          <div class="column">
-            <div class="field">
-              <label for="kkdf" class="label">KKDF (%)</label>
-              <div class="control">
-                <input class="input" type="number" name="kkdf" id="kkdf" min="0" step ="1" v-model.number="kkdf">
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="field">
-              <label for="bsmf" class="label">BSMF (%)</label>
-              <div class="control">
-                <input class="input" type="number" name="bsmf" id="bsmf" min="0" step ="1" v-model.number="bsmf">
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="field">
-              <label for="faiz_" class="label">FAİZ (%)</label>
-              <div class="control">
-                <input class="input" type="number" name="faiz_" id="faiz_" min="0" step ="0.01" v-model.number="faiz_">
-              </div>
-            </div>
-          </div>
+
+    <!-- ============ DEPOSIT ============ -->
+    <section id="panel-deposit" role="tabpanel" aria-labelledby="tab-deposit" class="hidden">
+      <div class="inputs">
+        <div class="field">
+          <label for="d-principal">Principal</label>
+          <input type="number" id="d-principal" min="0" step="10000" value="100000">
         </div>
-        <div class="columns">
-          <div class="column">
-            <div class="field">
-              <label for="kredi" class="label">KREDİ</label>
-              <div class="control">
-                <input class="input" type="number" name="kredi" id="kredi" min="10000" step ="10000" v-model.number="kredi">
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="field">
-              <label for="vade" class="label">VADE (ay)</label>
-              <div class="control">
-                <input class="input" type="number" name="vade" id="vade" min="1" v-model.number="vade">
-              </div>
-            </div>
-          </div>
+        <div class="field">
+          <label for="d-rate">Annual interest (%)</label>
+          <input type="number" id="d-rate" min="0" step="0.1" value="10">
         </div>
-        <div class="table-container">
-          <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Kalan</th>
-                <th>Ödenen</th>
-                <th>Faiz</th>
-                <th>Vergi</th>
-                <th>Taksit</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="i in vade">
-                <td>{{ i }}</td>
-                <td>{{ tablo[i - 1][i]['kalan'] }}</td>
-                <td>{{ tablo[i - 1][i]['odenen'] }}</td>
-                <td>{{ tablo[i - 1][i]['faiz'] }}</td>
-                <td>{{ tablo[i - 1][i]['vergi'] }}</td>
-                <td>{{ tablo[i - 1][i]['taksit'] }}</td>
-              </tr>
-            </tbody>
-            <tfoot class="has-text-weight-bold">
-              <tr>
-                <td colspan="2">Toplam</td>
-                <td>{{ toplam['t_odenen'] }}</td>
-                <td>{{ toplam['t_faiz'] }}</td>
-                <td>{{ toplam['t_vergi'] }}</td>
-                <td>{{ toplam['t_taksit'] }}</td>
-              </tr>
-            </tfoot>
-          </table>
+        <div class="field">
+          <label for="d-term">Term (days)</label>
+          <input type="number" id="d-term" min="1" step="30" value="30">
+        </div>
+        <div class="field">
+          <label for="d-periods">Periods</label>
+          <input type="number" id="d-periods" min="1" max="120" step="1" value="12">
         </div>
       </div>
-      <!-- end of app1 -->
-    </div>
 
-
-    <div id="mfh" class="content-tab" style="display:none">
-      <!-- app2 -->
-      <div id="app2">
-        <div class="columns">
-          <div class="column">
-            <div class="field">
-              <label for="anapara" class="label">ANAPARA (%)</label>
-              <div class="control">
-                <input class="input" type="number" name="anapara" id="anapara" min="10000" step ="10000" v-model.number="anapara">
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="field">
-              <label for="faiz_" class="label">YILLIK FAİZ (%)</label>
-              <div class="control">
-                <input class="input" type="number" name="faiz_" id="faiz_" min="0" step ="0.1" v-model.number="faiz_">
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="field">
-              <label for="vergi" class="label">VERGİ (%)</label>
-              <div class="control">
-                <input class="input" type="number" name="vergi" id="vergi" min="0" step ="1" v-model.number="vergi">
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="field">
-              <label for="vade" class="label">VADE (gün)</label>
-              <div class="control">
-                <input class="input" type="number" name="vade" id="vade" min="0" step ="30" v-model.number="vade">
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="field">
-              <label for="donem" class="label">DÖNEM</label>
-              <div class="control">
-                <input class="input" type="number" name="donem" id="donem" min="1" step ="1" v-model.number="donem">
-              </div>
-            </div>
-          </div>
+      <div class="summary">
+        <div class="stat primary">
+          <div class="stat-label">End balance</div>
+          <div class="stat-value" id="d-balance">—</div>
         </div>
-        <div class="table-container">
-          <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Anapara</th>
-                <th>Faiz</th>
-                <th>Vergi</th>
-                <th>Net</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="i in donem">
-                <td>{{ i }}</td>
-                <td>{{ tablo[i - 1][i]['anapara'] }}</td>
-                <td>{{ tablo[i - 1][i]['faiz'] }}</td>
-                <td>{{ tablo[i - 1][i]['vergi'] }}</td>
-                <td>{{ tablo[i - 1][i]['net'] }}</td>
-              </tr>
-            </tbody>
-            <tfoot class="has-text-weight-bold">
-              <tr>
-                <td colspan="2">Toplam</td>
-                <td>{{ toplam['t_faiz'] }}</td>
-                <td>{{ toplam['t_vergi'] }}</td>
-                <td>{{ toplam['t_net'] }}</td>
-              </tr>
-            </tfoot>
-          </table>
+        <div class="stat">
+          <div class="stat-label">Total interest</div>
+          <div class="stat-value" id="d-tinterest">—</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Total return (%)</div>
+          <div class="stat-value" id="d-return">—</div>
         </div>
       </div>
-      <!-- end of app2 -->
-    </div>
-  </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Period</th><th>Opening balance</th><th>Interest</th><th>Closing balance</th></tr>
+          </thead>
+          <tbody id="d-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ FUTURE VALUE ============ -->
+    <section id="panel-fv" role="tabpanel" aria-labelledby="tab-fv" class="hidden">
+      <div class="inputs">
+        <div class="field">
+          <label for="f-rate">Rate per period (%)</label>
+          <input type="number" id="f-rate" step="0.01" value="1">
+        </div>
+        <div class="field">
+          <label for="f-nper">Nper (periods)</label>
+          <input type="number" id="f-nper" min="1" max="600" step="1" value="12">
+        </div>
+        <div class="field">
+          <label for="f-pmt">Pmt (payment)</label>
+          <input type="number" id="f-pmt" step="100" value="-1000">
+        </div>
+        <div class="field">
+          <label for="f-pv">Pv (present value)</label>
+          <input type="number" id="f-pv" step="1000" value="-10000">
+        </div>
+        <div class="field">
+          <label for="f-type">Type</label>
+          <select id="f-type">
+            <option value="0" selected>0 — end of period</option>
+            <option value="1">1 — beginning of period</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="summary">
+        <div class="stat primary">
+          <div class="stat-label">Future value</div>
+          <div class="stat-value" id="f-fv">—</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Total payments</div>
+          <div class="stat-value" id="f-tpmt">—</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Total interest</div>
+          <div class="stat-value" id="f-tinterest">—</div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Period</th><th>Opening balance</th><th>Payment</th><th>Interest</th><th>Closing balance</th></tr>
+          </thead>
+          <tbody id="f-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ NPER (Excel NPER) ============ -->
+    <section id="panel-nper" role="tabpanel" aria-labelledby="tab-nper" class="hidden">
+      <div class="inputs">
+        <div class="field">
+          <label for="n-rate">Rate per period (%)</label>
+          <input type="number" id="n-rate" step="0.01" value="1">
+        </div>
+        <div class="field">
+          <label for="n-pmt">Pmt (payment)</label>
+          <input type="number" id="n-pmt" step="100" value="-1000">
+        </div>
+        <div class="field">
+          <label for="n-pv">Pv (present value)</label>
+          <input type="number" id="n-pv" step="1000" value="-10000">
+        </div>
+        <div class="field">
+          <label for="n-fv">Fv (target value)</label>
+          <input type="number" id="n-fv" step="1000" value="50000">
+        </div>
+        <div class="field">
+          <label for="n-type">Type</label>
+          <select id="n-type">
+            <option value="0" selected>0 — end of period</option>
+            <option value="1">1 — beginning of period</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="summary">
+        <div class="stat primary">
+          <div class="stat-label">Nper (periods)</div>
+          <div class="stat-value" id="n-nper">—</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Whole periods</div>
+          <div class="stat-value" id="n-whole">—</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Balance after whole periods</div>
+          <div class="stat-value" id="n-endbal">—</div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Period</th><th>Opening balance</th><th>Payment</th><th>Interest</th><th>Closing balance</th></tr>
+          </thead>
+          <tbody id="n-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="/tools/">tools</a> · <a href="https://gaktas.com/">gaktas.com</a>
+  </footer>
+
+  <script>
+    const fmt = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const num = (id) => {
+      const v = parseFloat(document.getElementById(id).value);
+      return Number.isFinite(v) ? v : 0;
+    };
+    const el = (id) => document.getElementById(id);
+
+    /* ---------- Loan ---------- */
+    function calcLoan() {
+      const amount = num('l-amount');
+      const rate = num('l-rate') / 100;            // monthly rate, taxes/fees included by the user
+      const term = Math.min(Math.max(Math.round(num('l-term')), 1), 360);
+
+      const installment = rate === 0
+        ? amount / term
+        : amount * (rate * Math.pow(1 + rate, term)) / (Math.pow(1 + rate, term) - 1);
+
+      let balance = amount;
+      let tInterest = 0, tPayment = 0;
+      const rows = [];
+
+      for (let m = 1; m <= term; m++) {
+        const interest = balance * rate;
+        const principal = installment - interest;
+        balance -= principal;
+
+        tInterest += interest;
+        tPayment += installment;
+
+        rows.push(`<tr><td>${m}</td><td>${fmt.format(installment)}</td><td>${fmt.format(principal)}</td><td>${fmt.format(interest)}</td><td>${fmt.format(Math.abs(balance) < 0.005 ? 0 : balance)}</td></tr>`);
+      }
+
+      el('l-tbody').innerHTML = rows.join('');
+      el('l-installment').textContent = fmt.format(installment);
+      el('l-total').textContent = fmt.format(tPayment);
+      el('l-tinterest').textContent = fmt.format(tInterest);
+    }
+
+    /* ---------- Deposit ---------- */
+    function calcDeposit() {
+      const principal0 = num('d-principal');
+      const rate = num('d-rate');                  // annual %, taxes included by the user
+      const days = Math.max(num('d-term'), 1);
+      const periods = Math.min(Math.max(Math.round(num('d-periods')), 1), 120);
+
+      let balance = principal0;
+      let tInterest = 0;
+      const rows = [];
+
+      for (let p = 1; p <= periods; p++) {
+        const interest = balance * rate * days / 36500;
+        const opening = balance;
+        balance += interest;                       // interest compounds into the next period
+        tInterest += interest;
+
+        rows.push(`<tr><td>${p}</td><td>${fmt.format(opening)}</td><td>${fmt.format(interest)}</td><td>${fmt.format(balance)}</td></tr>`);
+      }
+
+      el('d-tbody').innerHTML = rows.join('');
+      el('d-balance').textContent = fmt.format(balance);
+      el('d-tinterest').textContent = fmt.format(tInterest);
+      el('d-return').textContent = principal0 > 0 ? fmt.format(tInterest / principal0 * 100) + '%' : '—';
+    }
+
+    /* ---------- Future Value (Excel FV) ---------- */
+    function calcFV() {
+      const rate = num('f-rate') / 100;
+      const nper = Math.min(Math.max(Math.round(num('f-nper')), 1), 600);
+      const pmt = num('f-pmt');
+      const pv = num('f-pv');
+      const type = parseInt(el('f-type').value, 10); // 0: end, 1: beginning
+
+      // Excel sign convention: balance starts at -pv, payments of -pmt flow in each period.
+      let balance = -pv;
+      let tInterest = 0;
+      const rows = [];
+
+      for (let p = 1; p <= nper; p++) {
+        const opening = balance;
+        let interest;
+        if (type === 1) {
+          // payment at the beginning of the period earns interest
+          interest = (opening - pmt) * rate;
+          balance = opening - pmt + interest;
+        } else {
+          // payment at the end of the period
+          interest = opening * rate;
+          balance = opening + interest - pmt;
+        }
+        tInterest += interest;
+        rows.push(`<tr><td>${p}</td><td>${fmt.format(opening)}</td><td>${fmt.format(-pmt)}</td><td>${fmt.format(interest)}</td><td>${fmt.format(balance)}</td></tr>`);
+      }
+
+      el('f-tbody').innerHTML = rows.join('');
+      el('f-fv').textContent = fmt.format(balance);
+      el('f-tpmt').textContent = fmt.format(-pmt * nper);
+      el('f-tinterest').textContent = fmt.format(tInterest);
+    }
+
+    /* ---------- Nper (Excel NPER) ---------- */
+    function calcNper() {
+      const rate = num('n-rate') / 100;
+      const pmt = num('n-pmt');
+      const pv = num('n-pv');
+      const fv = num('n-fv');
+      const type = parseInt(el('n-type').value, 10);
+
+      // Excel NPER closed form
+      let nper;
+      if (rate === 0) {
+        nper = pmt === 0 ? NaN : -(pv + fv) / pmt;
+      } else {
+        const adj = pmt * (1 + rate * type);
+        const numr = adj - fv * rate;
+        const denr = adj + pv * rate;
+        nper = (numr / denr > 0) ? Math.log(numr / denr) / Math.log(1 + rate) : NaN;
+      }
+
+      const tbody = el('n-tbody');
+      if (!Number.isFinite(nper) || nper <= 0) {
+        el('n-nper').textContent = '—';
+        el('n-whole').textContent = '—';
+        el('n-endbal').textContent = '—';
+        tbody.innerHTML = '<tr><td colspan="5">Target is never reached with these inputs. Check the signs: money you pay out (Pmt, Pv) should be negative, the target (Fv) positive.</td></tr>';
+        return;
+      }
+
+      const whole = Math.min(Math.ceil(nper - 1e-9), 600);
+
+      // Same period simulation as the FV tab
+      let balance = -pv;
+      const rows = [];
+      for (let p = 1; p <= whole; p++) {
+        const opening = balance;
+        let interest;
+        if (type === 1) {
+          interest = (opening - pmt) * rate;
+          balance = opening - pmt + interest;
+        } else {
+          interest = opening * rate;
+          balance = opening + interest - pmt;
+        }
+        rows.push(`<tr><td>${p}</td><td>${fmt.format(opening)}</td><td>${fmt.format(-pmt)}</td><td>${fmt.format(interest)}</td><td>${fmt.format(balance)}</td></tr>`);
+      }
+
+      tbody.innerHTML = rows.join('');
+      el('n-nper').textContent = fmt.format(nper);
+      el('n-whole').textContent = String(whole) + (Math.ceil(nper - 1e-9) > 600 ? ' (capped)' : '');
+      el('n-endbal').textContent = fmt.format(balance);
+    }
+
+    /* ---------- Tabs ---------- */
+    const tabs = [
+      { tab: el('tab-loan'),    panel: el('panel-loan') },
+      { tab: el('tab-deposit'), panel: el('panel-deposit') },
+      { tab: el('tab-fv'),      panel: el('panel-fv') },
+      { tab: el('tab-nper'),    panel: el('panel-nper') },
+    ];
+    tabs.forEach(({ tab }, i) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(({ tab: t, panel: p }, j) => {
+          t.classList.toggle('active', i === j);
+          t.setAttribute('aria-selected', i === j);
+          p.classList.toggle('hidden', i !== j);
+        });
+      });
+    });
+
+    /* ---------- Live recalculation ---------- */
+    ['l-amount','l-rate','l-term'].forEach(id => el(id).addEventListener('input', calcLoan));
+    ['d-principal','d-rate','d-term','d-periods'].forEach(id => el(id).addEventListener('input', calcDeposit));
+    ['f-rate','f-nper','f-pmt','f-pv'].forEach(id => el(id).addEventListener('input', calcFV));
+    el('f-type').addEventListener('change', calcFV);
+    ['n-rate','n-pmt','n-pv','n-fv'].forEach(id => el(id).addEventListener('input', calcNper));
+    el('n-type').addEventListener('change', calcNper);
+
+    calcLoan();
+    calcDeposit();
+    calcFV();
+    calcNper();
+  </script>
 </body>
-
-<script src="app.js"></script>
-
 </html>
