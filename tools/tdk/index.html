@@ -329,7 +329,7 @@
       let html = '';
       for (let k = shown; k < end; k++) {
         const it = items[matches[k]];
-        const url = 'https://sozluk.gov.tr/?/' + encodeURIComponent(it.m);
+        const url = 'https://sozluk.gov.tr/?aranan=' + encodeURIComponent(it.m);
         let lis = '';
         for (let j = 0; j < it.a.length; j++) {
           lis += '<li>' + highlight(it.a[j], it.al[j], needle) + '</li>';
